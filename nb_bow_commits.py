@@ -16,7 +16,7 @@ import pandas as pd
 
 from nltk.stem.porter import PorterStemmer
 stemmer = PorterStemmer()
-from autocorrect import spell
+from autocorrect import Speller
 
 dataset = pd.read_csv('only_messages.txt', encoding='utf-8');
 
@@ -24,8 +24,7 @@ data = []
 
 list_words = ['security', 'secure', 'issue', 'vulnerable', 'incorrect', 'access',
 'failure', 'exception', 'overflow', 'null', 'ensure', 'leak', 'uninitialized',
-'confusion', 'disclosure', 'use after free', 'user-after-free', 'malicious',
-'confus', 'unauthor', 'un-author', 'auth', 'exploit', 'access', 'danger',
+'confusion', 'disclosure', 'use after free', 'user-after-free', 'malicious', 'unauthor', 'auth', 'exploit', 'access', 'danger',
 'bypass', 'sensitive', 'pass', 'safe', 'denial of service', 'cve', 'cwe', 'harmful','prevent','state']
 
 for i in range(dataset.shape[0]):
@@ -37,15 +36,16 @@ for i in range(dataset.shape[0]):
     commits_processed = []
     for word in tokenized_commits:
         if word not in set(stopwords.words('english')):
-        	#spell = Speller(lang='en')
+        	spell = Speller(lang='en')
         	commits_processed.append(spell(stemmer.stem(word)))
 
     commits_text = " ".join(commits_processed)
     data.append(commits_text)
 
-
-matrix = CountVectorizer(max_features=200, ngram_range=(1,2))
+matrix = CountVectorizer(binary=True,stop_words='english')
 matrix.fit_transform(list_words)
+matrix.get_feature_names()
+print(matrix.transform(data).todense())
 X = matrix.transform(data).toarray()
 y = dataset.iloc[:, 0]
 		
