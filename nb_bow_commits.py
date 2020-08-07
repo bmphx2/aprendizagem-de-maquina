@@ -69,6 +69,6 @@ print("Accuracy: ",accuracy)
 f1s = str(f1_score(y_test, y_pred, average='weighted'))
 print("F1 Score: ",f1s)
 
-vectorize_maessage = matrix.transform(['this is a something else']).toarray()
+vectorize_maessage = matrix.transform(['this is something else']).toarray()
 #print (vectorize_maessage)
 print(classifier.predict(vectorize_maessage))
