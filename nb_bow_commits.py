@@ -1,7 +1,7 @@
 from nltk.corpus import stopwords 
 from nltk.tokenize import word_tokenize, sent_tokenize 
 from nltk.probability import FreqDist
-from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.feature_extraction.text import CountVectorizer,TfidfTransformer
 from sklearn.metrics import confusion_matrix, classification_report, accuracy_score
 from sklearn.naive_bayes import GaussianNB
 from sklearn.model_selection import train_test_split
@@ -19,7 +19,7 @@ from nltk.stem.porter import PorterStemmer
 stemmer = PorterStemmer()
 from autocorrect import spell
 
-dataset = pd.read_csv('only_messages.txt', encoding='utf-8');
+dataset = pd.read_csv('titles_2.txt', encoding='utf-8');
 
 data = []
 
@@ -38,22 +38,24 @@ for i in range(dataset.shape[0]):
     for word in tokenized_commits:
         if word not in set(stopwords.words('english')):
         	#spell = Speller(lang='en')
-        	commits_processed.append(spell(stemmer.stem(word)))
+        	#commits_processed.append(spell(stemmer.stem(word)))
+        	commits_processed.append(stemmer.stem(word))
 
     commits_text = " ".join(commits_processed)
     data.append(commits_text)
 
-matrix = CountVectorizer(binary=True,stop_words='english')
+matrix = CountVectorizer(binary=True,stop_words='english',analyzer='word',vocabulary=list_words)
 matrix.fit_transform(list_words)
 #matrix.get_feature_names()
 #print(matrix.transform(data).todense())
-X = matrix.transform(data).toarray()
+X = matrix.fit_transform(data).toarray()
 y = dataset.iloc[:, 0]
 #print(X)
 		
 X_train, X_test, y_train, y_test = train_test_split(X, y,  test_size=0.5, random_state = 5)
 
 classifier = GaussianNB()
+#classifier = TfidfTransformer()
 #classifier = SVC(kernel='linear')
 classifier.fit(X_train, y_train)
 
@@ -67,6 +69,6 @@ print("Accuracy: ",accuracy)
 f1s = str(f1_score(y_test, y_pred, average='weighted'))
 print("F1 Score: ",f1s)
 
-vectorize_maessage = matrix.transform(['i have an issue vulnerable a security']).toarray()
+vectorize_maessage = matrix.transform(['this is a something else']).toarray()
 #print (vectorize_maessage)
 print(classifier.predict(vectorize_maessage))
