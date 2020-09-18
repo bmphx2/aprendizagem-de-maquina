@@ -1,0 +1,101 @@
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+\begin{document}
+
+\title{Classificação de Issues do Github com relação a Segurança}
+
+\author{\IEEEauthorblockN{1\textsuperscript{st} Bruno Gonçalves de Oliveira}
+    \IEEEauthorblockA{
+        \textit{Universidade Federal do Paraná (UFPR)}\\
+        Curitiba– PR – Brasil \\
+        bruno.mphx2@gmail.com}
+    \and
+    \IEEEauthorblockN{2\textsuperscript{nd} Diogo Cezar Teixeira Batista}
+    \IEEEauthorblockA{
+        \textit{Universidade Federal do Paraná (UFPR)}\\
+        Curitiba– PR – Brasil \\
+        diogocezar@utfpr.br}
+}
+
+\maketitle
+
+\begin{abstract}
+    Para a matéria de Aprendizagem de Máquina foi solicitado um problema que poderia ser resolvido através da técnica. Entre as características da aprendizagem de máquina, está a eficácia em classificação. O trabalho tem a meta de classificar issues descendentes de projetos do Github e classifica-las se são referentes a segurança ou não. As issues serão analisadas por suas discussões, tirando vantagem de palavras frequentes em textos referentes à segurança. O trabalho utilizou da técnica de Bag-of-Words aliada com o classificador Naive Bayes para detenção da melhor eficácia em classificação.
+\end{abstract}
+
+\begin{IEEEkeywords}
+    issues, github, segurança, classificação
+\end{IEEEkeywords}
+
+\section{Introdução}
+
+
+\section{Problema Proposto}
+
+Durante um estudo de requisitos não-funcionais se deu a necessidade de classificação de issues para o desenvo	lvimento do projeto.
+
+Essa classificação contrariamente ao que é realizado normalmente, deveria ser realizado através dos textos das issues e sem levar em consideração o código-fonte. A classificação se dará por relacionados a segurança ou não relacionados.
+
+\section{Base de Dados}
+
+Para a base de dados de treinamento e testes, duzentas issues foram enumeradas e classificadas dos projetos OKHTTP, jgit e couchbase. Sendo cem issues relacionadas a segurança e cem não relacionadas. Estas mensagens foram manualmente classificadas e arquivadas como arquivo CSV, assim como apresentado na Figura 1.
+
+A cada linha se tem a classificação e então o texto determinante da classificação recebida, security ou not.
+
+\section{Experimentos}
+
+Para o início dos experimentos envolvendo os dados propostos, o uso da aprendizagem de máquina se faz necessário algumas etapas essenciais. Nas próximas seções, estas etapas serão detalhadas.
+
+\subsection{Conversão de Textos}
+
+Nesta parte do processo é utilizada a técnica conhecida como Bag-of-Words, as sentenças serão representadas através da identificação de suas palavras e a quantidade que aparecem.
+Por exemplo: My dog’s name is Rex.
+Na Figura 2 é feita a identificação e relação de cada palavra da frase.
+
+Na Figura 3, é possível observar a relação de identificação da palavra e a quantidade.
+
+Após identificadas todas as palavras das sentenças, se tem a quantidade que as palavras se apresentam nos textos, o que será útil para a classificação.
+
+\subsection{Sanitização da Entrada}
+
+Para identificação de palavras-chave no contexto descoberto, é necessário remover palavras que não representam o contexto das frases ou ainda palavras semelhantes que se representam da mesma forma. Algumas das técnicas aplicadas:
+
+\begin{itemize}
+    \item Transformar todo texto em minúsculo, assim não terá variações por casos de maiúsculo e minúsculo;
+    \item Ignorar pontuações;
+    \item Corrigir palavras com ortografia incorreta;
+    \item Remover as chamadas stop words que não acrescentam informação aos textos, por exemplo:  of, a, in, on, etc;
+\end{itemize}
+
+\subsection{Importância da Palavra}
+
+Com os vetores de palavras formados com a identificação e a quantidade, é possível aplicar a técnica de TF-IDF (term frequency-inverce document frequency). A técnica pretende refletir quão importante uma palavra é ao documento. O valor de tf-idf aumenta proporcionalmente conforme o número de vezes a palavra aparece no texto e é compensado pelo número de textos na base de dados, ajustando o número da frequência das palavras.
+
+\section{Resultados}
+
+Depois de analisado os valores de X e Y, se determinou que a melhor formatação de resolução para as imagens seria 50x25 onde os valores foram de 0.927 para Acurácia e 0.928 para F1 Score.
+
+Contudo, se levado em conta diferentes valores para KNN, 1 é o valor que resulta em melhor Acurácia para o problema.
+
+\subsection{Análise das Matrizes de Confusão}
+
+Na Figura 1 é possível observar a matriz de confusão para o pior caso (10x20) e na Figura 2 para o melhor caso (50x25) utilizando KNN=3.
+
+É possível observar na comparação entre a as matrizes que ainda perdura erros durante a classificação nos mesmos espaços, devido ser a mesma metodologia. Observando os valores de 1,7 7,9 há uma margem considerada na classificação pelo aumento do número de pixels, a classificação pode se basear em representações mais acuradas.
+
+\section{Conclusão}
+
+\cite{IEEEexample:confwithvolume}.
+
+\bibliographystyle{IEEEtran}
+\bibliography{IEEEabrv,IEEEexample.bib}
+
+\end{document}
