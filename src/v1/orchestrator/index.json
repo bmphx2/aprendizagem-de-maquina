@@ -1,0 +1,40 @@
+{
+  "configs": {
+    "train": "data/train.csv",
+    "test": "data/test.csv",
+    "result_classifiers": "result/classifiers/tabulation_{timestamp}.csv",
+    "result_conf_mat": "result/conf_mat/",
+    "result_roc": "result/roc/"
+  },
+  "experiments": [
+    {
+      "classifier": "logistic_regression",
+      "parameters": {
+        "solver": "lbfgs"
+      }
+    },
+    {
+      "classifier": "tree",
+      "parameters": {
+        "criterion": "entropy",
+        "max_depth": 8
+      }
+    },
+    {
+      "classifier": "naive_bayes",
+      "parameters": {}
+    },
+    {
+      "classifier": "lda",
+      "parameters": {}
+    },
+    {
+      "classifier": "perceptron",
+      "parameters": {}
+    },
+    {
+      "classifier": "svm",
+      "parameters": {}
+    }
+  ]
+}
