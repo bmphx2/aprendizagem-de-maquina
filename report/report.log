@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.12.13)  18 SEP 2020 21:03
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.12.13)  19 SEP 2020 09:52
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -453,7 +453,14 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 LaTeX Font Info:    Try loading font information for U+msb on input line 28.
  (/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) (/Users/diogocezar/phd/aprendizagem-de-maquina/report/report.bbl)
+) [1{/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
+
+
+]
+
+LaTeX Warning: Citation `IEEEexample:confwithvolume' on page 2 undefined on input line 97.
+
+(/Users/diogocezar/phd/aprendizagem-de-maquina/report/report.bbl)
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -465,23 +472,26 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[1{/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
+[2
 
+] (/Users/diogocezar/phd/aprendizagem-de-maquina/report/report.aux)
 
-] (/Users/diogocezar/phd/aprendizagem-de-maquina/report/report.aux) ) 
+LaTeX Warning: There were undefined references.
+
+ ) 
 Here is how much of TeX's memory you used:
- 4414 strings out of 492649
- 64686 string characters out of 6129621
- 140080 words of memory out of 5000000
- 8232 multiletter control sequences out of 15000+600000
- 41174 words of font info for 88 fonts, out of 8000000 for 9000
+ 4417 strings out of 492649
+ 64714 string characters out of 6129621
+ 141080 words of memory out of 5000000
+ 8234 multiletter control sequences out of 15000+600000
+ 42281 words of font info for 89 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  41i,11n,35p,697b,302s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on /Users/diogocezar/phd/aprendizagem-de-maquina/report/report.pdf (1 page, 64802 bytes).
+Output written on /Users/diogocezar/phd/aprendizagem-de-maquina/report/report.pdf (2 pages, 66137 bytes).
 PDF statistics:
- 29 PDF objects out of 1000 (max. 8388607)
- 20 compressed objects within 1 object stream
+ 32 PDF objects out of 1000 (max. 8388607)
+ 22 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
