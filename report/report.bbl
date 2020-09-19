@@ -21,9 +21,8 @@
 \providecommand{\BIBdecl}{\relax}
 \BIBdecl
 
-\bibitem{IEEEexample:confwithvolume}
-M.~Yajnik, S.~B. Moon, J.~Kurose, and D.~Towsley, ``Measurement and modeling of
-  the temporal dependence in packet loss,'' in \emph{Proc. {IEEE}
-  {INFOCOM}'99}, vol.~1, New York, NY, Mar. 1999, pp. 345--352.
+\bibitem{Scott:ProGit}
+S.~Chacon and B.~Straub, \emph{Pro Git}.\hskip 1em plus 0.5em minus 0.4em\relax
+  Apress, 2020.
 
 \end{thebibliography}
