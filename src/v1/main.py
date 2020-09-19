@@ -20,8 +20,6 @@ from rich.console import Console
 from rich.table import Table
 
 FILE_ORCHESTRATOR = 'orchestrator/index.json'
-FILE_TRAIN_INPUT_CSV = "data/train.csv"
-FILE_TEST_INPUT_CSV = "data/test.csv"
 
 start_time = 0
 stemmer = PorterStemmer()

@@ -1,7 +1,0 @@
-Classifier,F1Score,Accuracy,Precision,Recall,Execution Time (s)
-logistic_regression,0.865,0.867,2.048
-tree,0.865,0.867,0.205
-naive_bayes,0.307,0.471,0.195
-lda,0.865,0.867,0.244
-perceptron,0.861,0.862,0.219
-svm,0.865,0.867,0.195

@@ -4,7 +4,7 @@ import os
 
 
 def save_conf_mat(folder, classifier, name, x_test, y_test):
-    mk_folder = "result/conf_mat/" + folder
+    mk_folder = "results/conf_mat/" + folder
     if not os.path.exists(mk_folder):
         os.mkdir(mk_folder)
     output_file = mk_folder + "/" + name + ".png"
