@@ -15,7 +15,6 @@ from sklearn import svm
 from rich.console import Console
 import numpy
 from . import utils
-from . import generate_roc
 from . import generate_conf_mat
 
 console = Console()
@@ -124,6 +123,5 @@ def classify_tree(data):
 
 
 def classify_mlp(data):
-    # normalizar com z-score
     classificator = MLPClassifier(**data['parameters'])
     return classify_generic(classificator, data)

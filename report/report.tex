@@ -10,7 +10,7 @@
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \begin{document}
 
-\title{Classificação de Issues do Github com relação a Segurança}
+\title{Classificação de Issues do Github com Relação a Segurança}
 
 \author{\IEEEauthorblockN{1\textsuperscript{st} Bruno Gonçalves de Oliveira}
     \IEEEauthorblockA{
@@ -40,7 +40,7 @@
 
 \section{Problema Proposto}
 
-Durante um estudo de requisitos não-funcionais se deu a necessidade de classificação de issues para o desenvo	lvimento do projeto.
+Durante um estudo de requisitos não-funcionais se deu a necessidade de classificação de issues para o desenvolvimento do projeto.
 
 Essa classificação contrariamente ao que é realizado normalmente, deveria ser realizado através dos textos das issues e sem levar em consideração o código-fonte. A classificação se dará por relacionados a segurança ou não relacionados.
 
@@ -80,16 +80,6 @@ Para identificação de palavras-chave no contexto descoberto, é necessário re
 Com os vetores de palavras formados com a identificação e a quantidade, é possível aplicar a técnica de TF-IDF (term frequency-inverce document frequency). A técnica pretende refletir quão importante uma palavra é ao documento. O valor de tf-idf aumenta proporcionalmente conforme o número de vezes a palavra aparece no texto e é compensado pelo número de textos na base de dados, ajustando o número da frequência das palavras.
 
 \section{Resultados}
-
-Depois de analisado os valores de X e Y, se determinou que a melhor formatação de resolução para as imagens seria 50x25 onde os valores foram de 0.927 para Acurácia e 0.928 para F1 Score.
-
-Contudo, se levado em conta diferentes valores para KNN, 1 é o valor que resulta em melhor Acurácia para o problema.
-
-\subsection{Análise das Matrizes de Confusão}
-
-Na Figura 1 é possível observar a matriz de confusão para o pior caso (10x20) e na Figura 2 para o melhor caso (50x25) utilizando KNN=3.
-
-É possível observar na comparação entre a as matrizes que ainda perdura erros durante a classificação nos mesmos espaços, devido ser a mesma metodologia. Observando os valores de 1,7 7,9 há uma margem considerada na classificação pelo aumento do número de pixels, a classificação pode se basear em representações mais acuradas.
 
 \section{Conclusão}
 

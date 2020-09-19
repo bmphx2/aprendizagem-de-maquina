@@ -1,15 +1,15 @@
 # Fdb version 3
-["bibtex report"] 1600436291 "report.aux" "report.bbl" "report" 1600436292
+["bibtex report"] 1600473699 "report.aux" "report.bbl" "report" 1600473800
   "./IEEEtran.bst" 1168508629 61632 1eded68932b68cdfaf04f54eba82634b ""
   "IEEEabrv.bib" 1600369160 17841 d1b6e95678a4492b1a7c620153c6aba2 ""
   "IEEEexample.bib" 1600369211 40841 e44fe332a18c822d56e5c2caf5bee350 ""
-  "report.aux" 1600436291 1195 2304f20005328daae3556e0b24c8547c ""
+  "report.aux" 1600473800 1053 b9694eec255e13ab2e2abdf2c2f63dd5 ""
   (generated)
   "report.blg"
   "report.bbl"
-["pdflatex"] 1600436291 "/Users/diogocezar/phd/aprendizagem-de-maquina/report/report.tex" "/Users/diogocezar/phd/aprendizagem-de-maquina/report/report.pdf" "report" 1600436292
-  "/Users/diogocezar/phd/aprendizagem-de-maquina/report/report.aux" 1600436291 1195 2304f20005328daae3556e0b24c8547c ""
-  "/Users/diogocezar/phd/aprendizagem-de-maquina/report/report.tex" 1600436290 5461 3ce3c59607a8d95f587b653593b3cc2f ""
+["pdflatex"] 1600473800 "/Users/diogocezar/phd/aprendizagem-de-maquina/report/report.tex" "/Users/diogocezar/phd/aprendizagem-de-maquina/report/report.pdf" "report" 1600473800
+  "/Users/diogocezar/phd/aprendizagem-de-maquina/report/report.aux" 1600473800 1053 b9694eec255e13ab2e2abdf2c2f63dd5 ""
+  "/Users/diogocezar/phd/aprendizagem-de-maquina/report/report.tex" 1600473799 4612 b55474c9ffef2335bfe5b6812c9bf6d5 ""
   "/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc" 1480098666 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2018/texmf-dist/fonts/map/fontname/texfonts.map" 1511824771 3332 103109f5612ad95229751940c61aada0 ""
   "/usr/local/texlive/2018/texmf-dist/fonts/tfm/adobe/times/ptmb7t.tfm" 1480098689 2172 fd0c924230362ff848a33632ed45dc23 ""
@@ -89,12 +89,12 @@
   "/usr/local/texlive/2018/texmf-var/web2c/pdftex/pdflatex.fmt" 1544732100 4220281 d4474a244bf1b153d2b8959e8c005881 ""
   "/usr/local/texlive/2018/texmf.cnf" 1523934483 577 0b39adfd7c93507ff20c9c14c2f1a33f ""
   "IEEEtran.cls" 1600369001 288304 b67b6fc6c2abb39f9b461923f5199343 ""
-  "report.aux" 1600436291 1195 2304f20005328daae3556e0b24c8547c ""
-  "report.bbl" 1600436291 1126 695d7e45764402b621c190f3bb20a505 "bibtex report"
-  "report.tex" 1600436290 5461 3ce3c59607a8d95f587b653593b3cc2f ""
+  "report.aux" 1600473800 1053 b9694eec255e13ab2e2abdf2c2f63dd5 ""
+  "report.bbl" 1600473700 1126 695d7e45764402b621c190f3bb20a505 "bibtex report"
+  "report.tex" 1600473799 4612 b55474c9ffef2335bfe5b6812c9bf6d5 ""
   (generated)
-  "report.pdf"
+  "/Users/diogocezar/phd/aprendizagem-de-maquina/report/report.pdf"
   "/Users/diogocezar/phd/aprendizagem-de-maquina/report/report.log"
   "report.aux"
   "report.log"
-  "/Users/diogocezar/phd/aprendizagem-de-maquina/report/report.pdf"
+  "report.pdf"

@@ -2,22 +2,18 @@
   "configs": {
     "train": "data/train.csv",
     "test": "data/test.csv",
-    "result_classifiers": "result/classifiers/tabulation_{timestamp}.csv",
-    "result_conf_mat": "result/conf_mat/",
-    "result_roc": "result/roc/"
+    "result_classifiers": "results/classifiers/tabulation_{timestamp}.csv",
+    "result_conf_mat": "results/conf_mat/"
   },
   "experiments": [
     {
-      "classifier": "logistic_regression",
-      "parameters": {
-        "solver": "lbfgs"
-      }
+      "classifier": "svm",
+      "parameters": {}
     },
     {
-      "classifier": "tree",
+      "classifier": "knn",
       "parameters": {
-        "criterion": "entropy",
-        "max_depth": 8
+        "n_neighbors": 7
       }
     },
     {
@@ -29,11 +25,24 @@
       "parameters": {}
     },
     {
+      "classifier": "logistic_regression",
+      "parameters": {
+        "solver": "lbfgs"
+      }
+    },
+    {
       "classifier": "perceptron",
       "parameters": {}
     },
     {
-      "classifier": "svm",
+      "classifier": "tree",
+      "parameters": {
+        "criterion": "entropy",
+        "max_depth": 8
+      }
+    },
+    {
+      "classifier": "mlp",
       "parameters": {}
     }
   ]
