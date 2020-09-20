@@ -83,26 +83,26 @@ Por fim, discute-se os resultados obtidos dos experimentos e possíveis trabalho
 
 Projetos \textit{OpenSource} são, por essência, públicos na Internet, e por este motivo, suas \textit{issues} também estão dispostas de forma pública.
 
-Para a extração dos dados das \textit{issues}, tanto de treinamento quanto de testes, utilizou-se a a ferramenta \textit{\footnote{https://github.com/gavinr/github-csv-tools}} que possibilita a exportação das dos dados de um repositório no GitHub para um arquivo no formato CSV.
+Para a extração dos dados das \textit{issues}, tanto de treinamento quanto de testes, utilizou-se a a ferramenta \textit{github-csv-tools\footnote{https://github.com/gavinr/github-csv-tools}} que possibilita a exportação dos dados de um repositório no GitHub, e os salva em um arquivo no formato CSV.
 
-Para a geração da base de testes, foram extraídas as \textit{issues} do projeto \textit{Wildfly\footnote{https://github.com/wildfly/wildfly}}. Já para a base de treinamento utilizou-se \textit{issues} aleatórias dos projetos: \textit{https://github.com/square/okhttp/}, \textit{https://github.com/eclipse/jgit} e \textit{https://github.com/couchbase}.
+Para a geração da base de testes, foram extraídas as \textit{issues} do projeto \textit{Wildfly\footnote{https://github.com/wildfly/wildfly}}. Já para a base de treinamento utilizou-se \textit{issues} dos projetos: \textit{https://github.com/square/okhttp/}, \textit{https://github.com/eclipse/jgit} e \textit{https://github.com/couchbase}.
 
 Estes dados foram organizados em arquivos no formato CSV que possuem 2 colunas. A primeira coluna indica se a \textit{issue} é um tópico relacionado a segurança ou não, e a segunda coluna representa de fato o texto coletado.
 
-Algumas linhas dos arquivos extraídos podem ser vistas no Código \ref{code:csv_example}
+Um exemplo abreviado de cada classe pode ser vista no Código \ref{code:csv_example}.
 
 \begin{lstlisting}[caption={CSV Exemplo com Base de Dados},captionpos=b,frame=single,label={code:csv_example}]
 security,PushObserver can be used to push serverinitiated HTTP/2 requests into an OkResponseCache...
 not,Handle LOCKED in conversions.Motivation...
 \end{lstlisting}
 
-Para a fonte de dados de treinamento foram inseridas 199 entradas, enquanto que para a base de teste foram utilizadas 211 entradas.
+Os dados de treinamento possuem 199 entradas, enquanto que para a base de teste foram utilizadas 211 entradas.
 
 \section{Pré-processamento}
 
-Após a obtenção dos dados, é importante a realização de algumas etapas de pré-processamento do texto, estes tratamentos procuram maximizar a representatividade das \textit{issues} em questão de acordo com o seu significado.
+Após a obtenção dos dados, é importante a realização de algumas etapas de pré-processamento do texto, estes tratamentos procuram maximizar a representatividade das \textit{issues} de acordo com o seu significado.
 
-Para isso, é necessário remover palavras que não representam o contexto das frases. Com esse objetivo, aplicou-se algumas técnicas para cada uma das frases da base de treinamento e testes.
+Para isso, é necessário remover palavras que não representam o contexto das frases. Com esse objetivo, aplicou-se técnicas para cada uma das frases das \textit{issues} da base de treinamento e testes.
 
 As regras aplicadas foram:
 
@@ -117,7 +117,7 @@ Para a aplicação das regras criou-se uma função de preparação do \textit{d
 
 \section{Extração de Características}
 
-Para a extração de características, utiliza-se uma técnica conhecida como \textit{Bag-of-Words}. Nesta técnica, as sentenças são representadas através da identificação de suas palavras e a quantidade em que aparecem no texto. Por exemplo, considerando o seguinte text, escrito por \textit{Charles Dickens}:
+Para a extração de características, utiliza-se uma técnica conhecida como \textit{Bag-of-Words}. Nesta técnica, as sentenças são representadas através da identificação de suas palavras e a quantidade em que aparecem no texto. Por exemplo, considerando o seguinte texto, escrito por \textit{Charles Dickens}:
 
 \begin{quote}
     It was the best of times,\\
@@ -126,7 +126,7 @@ Para a extração de características, utiliza-se uma técnica conhecida como \t
     It was the age of follishness.
 \end{quote}
 
-Deve-se considerar palavras únicas, neste caso teríamos um vocabulário com 10 palavras: [it, was,
+Considerando palavras únicas, neste caso, teríamos um vocabulário com 10 palavras: [it, was,
 the, best, of, times, worst, age, wisdom, foolishness]
 
 Na sequência deve-se criar os vetores que representam a quantidade de aparições de uma palavra no texto. Por exemplo, no documento ``It was the age of wisdom'' pode-se representar através de um vetor dado por: $[1, 1, 1, 0, 1, 0, 0, 1, 1, 0]$. Se novas frases, com palavras fora do vocabulário definido forem adicionadas, então essas serão descartadas.
@@ -175,7 +175,7 @@ Um exemplo do arquivo de orquestração pode ser visto no Código \ref{code:orqu
 }
 \end{lstlisting}
 
-Para cada uma das ocorrências no vetor de experimentos o programa desenvolvido utiliza implementações do \textit{framework} \textit{\footnote{https://scikit-learn.org/}scikit-learn} para o treinamento do classificador, validação da base de testes e coleta dos resultados. Os resultados são armazenados automaticamente em um arquivo no formato CSV para cada um dos experimentos. Os campos salvos são: \textit{Classifier, F1Score, Accuracy e Execution Time (s)}. Além disso, para cada execução são armazenadas as matrizes de confusão como imagens e também como arquivos CSV.
+Para cada uma das ocorrências no vetor de experimentos, o programa desenvolvido utiliza implementações do \textit{framework} \textit{\footnote{https://scikit-learn.org/}scikit-learn} para o treinamento do classificador. Utlizando como fonte de dados, as entradas já tratados anteriormente (x\_train, y\_train, x\_test, y\_test). Os resultados são armazenados automaticamente em um arquivo no formato CSV que tabula os resultados obtidos em cada um dos experimentos. Os campos salvos são: \textit{Classifier, F1Score, Accuracy e Time (s)}. Além disso, para cada execução são armazenadas as matrizes de confusão como imagens e também como arquivos CSV.
 
 \section{Resultados Obtidos}
 
