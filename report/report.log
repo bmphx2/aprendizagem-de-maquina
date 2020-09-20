@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.12.13)  19 SEP 2020 09:52
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.12.13)  19 SEP 2020 16:16
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -368,42 +368,64 @@ Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
 Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
-) (/Users/diogocezar/phd/aprendizagem-de-maquina/report/report.aux)
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/listings/listings.sty
+\lst@mode=\count111
+\lst@gtempboxa=\box30
+\lst@token=\toks21
+\lst@length=\count112
+\lst@currlwidth=\dimen137
+\lst@column=\count113
+\lst@pos=\count114
+\lst@lostspace=\dimen138
+\lst@width=\dimen139
+\lst@newlines=\count115
+\lst@lineno=\count116
+\lst@maxwidth=\dimen140
+ (/usr/local/texlive/2018/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
+\c@lstnumber=\count117
+\lst@skipnumbers=\count118
+\lst@framebox=\box31
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/listings/listings.cfg
+File: listings.cfg 2015/06/04 1.6 listings configuration
+))
+Package: listings 2015/06/04 1.6 (Carsten Heinz)
+ (/Users/diogocezar/phd/aprendizagem-de-maquina/report/report.aux)
 \openout1 = `report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 11.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 11.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 33.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 33.
  (/usr/local/texlive/2018/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    ... okay on input line 33.
 
 -- Lines per column: 56 (exact).
 (/usr/local/texlive/2018/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count111
-\scratchdimen=\dimen137
-\scratchbox=\box30
-\nofMPsegments=\count112
-\nofMParguments=\count113
-\everyMPshowfont=\toks21
-\MPscratchCnt=\count114
-\MPscratchDim=\dimen138
-\MPnumerator=\count115
-\makeMPintoPDFobject=\count116
-\everyMPtoPDFconversion=\toks22
+\scratchcounter=\count119
+\scratchdimen=\dimen141
+\scratchbox=\box32
+\nofMPsegments=\count120
+\nofMParguments=\count121
+\everyMPshowfont=\toks22
+\MPscratchCnt=\count122
+\MPscratchDim=\dimen142
+\MPnumerator=\count123
+\makeMPintoPDFobject=\count124
+\everyMPtoPDFconversion=\toks23
 ) (/usr/local/texlive/2018/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
  (/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/infwarerr.sty
@@ -445,22 +467,30 @@ Package grfext Info: Graphics extension search list:
  (/usr/local/texlive/2018/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-LaTeX Font Info:    Calculating math sizes for size <11> on input line 28.
-LaTeX Font Info:    Try loading font information for U+msa on input line 28.
+\c@lstlisting=\count125
+LaTeX Font Info:    Calculating math sizes for size <11> on input line 50.
+LaTeX Font Info:    Try loading font information for U+msa on input line 50.
  (/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 28.
+LaTeX Font Info:    Try loading font information for U+msb on input line 50.
  (/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1{/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 
 ]
+Underfull \hbox (badness 1635) in paragraph at lines 115--116
+[]\OT1/ptm/m/n/10 Para a aplica[][]ao das re-gras criou-se uma fun[][]ao de
+ []
 
-LaTeX Warning: Citation `IEEEexample:confwithvolume' on page 2 undefined on input line 97.
-
-(/Users/diogocezar/phd/aprendizagem-de-maquina/report/report.bbl)
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 155.
+(/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/omsptm.fd
+File: omsptm.fd 
+)
+LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <7> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 155.
+ [2] (/Users/diogocezar/phd/aprendizagem-de-maquina/report/report.bbl)
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -472,26 +502,22 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[2
+[3
 
-] (/Users/diogocezar/phd/aprendizagem-de-maquina/report/report.aux)
-
-LaTeX Warning: There were undefined references.
-
- ) 
+] (/Users/diogocezar/phd/aprendizagem-de-maquina/report/report.aux) ) 
 Here is how much of TeX's memory you used:
- 4417 strings out of 492649
- 64714 string characters out of 6129621
- 141080 words of memory out of 5000000
- 8234 multiletter control sequences out of 15000+600000
- 42281 words of font info for 89 fonts, out of 8000000 for 9000
+ 6027 strings out of 492649
+ 85948 string characters out of 6129621
+ 196824 words of memory out of 5000000
+ 9829 multiletter control sequences out of 15000+600000
+ 42252 words of font info for 89 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,11n,35p,697b,302s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on /Users/diogocezar/phd/aprendizagem-de-maquina/report/report.pdf (2 pages, 66137 bytes).
+ 41i,11n,35p,766b,1289s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on /Users/diogocezar/phd/aprendizagem-de-maquina/report/report.pdf (3 pages, 95861 bytes).
 PDF statistics:
- 32 PDF objects out of 1000 (max. 8388607)
- 22 compressed objects within 1 object stream
+ 43 PDF objects out of 1000 (max. 8388607)
+ 30 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

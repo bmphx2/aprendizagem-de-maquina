@@ -8,6 +8,28 @@
 \usepackage{xcolor}
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+\usepackage{listings}
+
+\lstset{
+	numbers=left,
+	stepnumber=1,
+	firstnumber=1,
+	numberstyle=\scriptsize,
+	extendedchars=true,
+	breaklines=true,
+	frame=single,
+	showstringspaces=false,
+  aboveskip=1.5em,
+	xleftmargin=2.5em,
+	framexleftmargin=2em,
+	basicstyle=\scriptsize,
+}
+
+\renewcommand{\lstlistingname}{Código}
+\renewcommand{\lstlistlistingname}{Lista de Códigos}
+
+
 \begin{document}
 
 \title{Classificação de Issues do Github com Relação a Segurança}
@@ -28,73 +50,145 @@
 \maketitle
 
 \begin{abstract}
-    Para a matéria de Aprendizagem de Máquina foi solicitado um problema que poderia ser resolvido através da técnica. Entre as características da aprendizagem de máquina, está a eficácia em classificação. O trabalho tem a meta de classificar issues descendentes de projetos do Github e classifica-las se são referentes a segurança ou não. As issues serão analisadas por suas discussões, tirando vantagem de palavras frequentes em textos referentes à segurança. O trabalho utilizou da técnica de Bag-of-Words aliada com o classificador Naive Bayes para detenção da melhor eficácia em classificação.
+    As \textit{issues} do GitHub representam grande parte da evolução dos projetos \textit{OpenSource}. Este trabalho propõe uma solução para classificar \textit{issues} que podem ou não estar relacionadas a segurança da informação. As mensagens serão analisadas utilizando as palavras frequentes em textos referentes à segurança. Utiliza-se a técnica de \textit{Bag-of-Words} em conjunto com \textit{TF-IDF} para a criação dos vetores de representação. Na sequência, múltiplos classificadores foram utilizados, entre eles: svm, knn, naive\_bayes, lda, logistic\_regression, perceptron, tree e mlp. Os resultados obtidos apresentam uma acurácia superior a 80\%.
 \end{abstract}
 
 \begin{IEEEkeywords}
-    issues, github, segurança, classificação
+    Issues, GitHub, Segurança da Informação, Classificadores, Aprendizagem de Máquina
 \end{IEEEkeywords}
 
 \section{Introdução}
 
-O controle, gerenciamento e manutenção de arquivos, especialmente no âmbito do desenvolvimento de software, sempre foi um desafio. Problemas recorrentes como: backups não realizados, sobrescritas de arquivos, dificil manutenabilidade de projetos desenvolvidos em equipes, são motivações para a utilização de algum sistema de versionamento de arquivos. \cite{Scott:ProGit}
+O controle, gerenciamento e manutenção de arquivos, especialmente no âmbito do desenvolvimento de \textit{software}, sempre foi um desafio. Problemas recorrentes como: backups não realizados, sobrescritas de arquivos, dificil manutenabilidade de projetos desenvolvidos em equipes, são motivações para a utilização de algum sistema de versionamento de arquivos. \cite{Scott:ProGit}
 
 Dentre as várias ferramentas existenstes no mercado, como por exemplo: CVS, Subversion, TFS, Mercurial, o Git se destaca por ter sido amplamente utilizado pela comunidade de desenvolvimento, com o advento da popularização dos projetos OpenSource. Estes projetos se consolidaram em com ferramentas como o GitHub que é uma plataforma para versionamento, gerenciamento e colaboração de projetos, que utiliza o Git como base.
 
-São várias as possibilidades que essas ferramentas proporcionam para verionamento dos projetos, mas para o contexto deste trabalho, destaca-se uma muito importante, a mensagem enviada ao realizar uma modificação na estrutrua de arquivos. Essa ação é denominada como commit, e cada commit possui um label atrelado a ele. É através desta mensagem que um desenvolvedor pode descrever quais foram as alterações que ele realizou.
+São várias as possibilidades que essas ferramentas proporcionam para verionamento dos projetos, no GitHub, por exemplo, existe uma sessão de \textit{issues} (problemas) na qual, os colaboradores de um projeto \textit{Open Source} podem cadastrar possíveis \textit{bugs}, melhorias, ou novas features para os projetos compartilhados entre os usuários colaboradores.
 
-Eventualmente, dentre os ajustes realizados neste projetos, são realizados ajustes relacionados a segurança. Esses ajustes são críticos e precisam ser analisados por outras pessoas, mesmo após já terem sidos enviados.
+Na descrição dessas \textit{issues} feita através do preenchimento de um campo de texto, é possível identificar qual é o contexto em que se aplica determinada correção.
 
-Mas como identificar quais são os ajustes de um projeto que estão relacionados com segurança? Como separar estes ajustes para que especialistas possam analisar o cógidos? Essas perguntas são a motivação para o desenvolvimento deste trabalho.
+Eventualmente, dentre as correções realizadas nestes projetos, são identificados ajustes relacionados a segurança. Essa issues, quando consideradas críticas, podem ser analisadas por outros especialistas para uma arguição mais detalhada e um possível aprimoramento.
 
-A proposta deste trabalho é a criação de uma ferramenta que utilize técnicas de aprendizagem de máquina para a criação de um oráculo classificador que consiga analisar as palavras contidas em uma mensagem de commit, e classificar se este commit está ou não relacionado à uma implementação de segurança.
+Mas como identificar quais são os ajustes de um projeto que estão relacionados com segurança? Como separar estes ajustes para que especialistas possam analisar os cógidos? Essas perguntas guiam a motivação para o desenvolvimento deste trabalho.
 
-\section{Problema Proposto}
+Propõe-se a criação de uma ferramenta que utilize técnicas de aprendizagem de máquina para a criação de um oráculo classificador que consiga analisar as palavras contidas em uma mensagem de issue, e classificar se esta issue está ou não relacionada à uma implementação de segurança.
 
-Durante um estudo de requisitos não-funcionais se deu a necessidade de classificação de issues para o desenvolvimento do projeto.
+Para criação de uma base de dados de treinamento e testes, duzentas \textit{issues} foram extraídas e classificadas dos projetos \textit{OKHTTP}, \textit{jgit} e \textit{couchbase}.
 
-Essa classificação contrariamente ao que é realizado normalmente, deveria ser realizado através dos textos das issues e sem levar em consideração o código-fonte. A classificação se dará por relacionados a segurança ou não relacionados.
+Para a automatização dos experimentos, foi criado um sistema \textit{orquestrador} no qual é possível definir as instruções para a execução e coleta das evidências de todo o fluxo para os diferentes classificadores, os utilizados neste experimento foram: svm, knn, naive\_bayes, lda, logistic\_regression, perceptron, tree e mlp. Para cada um dos testes, anotou-se a acurácia, f1score, tempo de execução e sua matriz de confusão.
 
-\section{Base de Dados}
+Por fim, discute-se os resultados obtidos dos experimentos e possíveis trabalhos futuros.
 
-Para a base de dados de treinamento e testes, duzentas issues foram enumeradas e classificadas dos projetos OKHTTP, jgit e couchbase. Sendo cem issues relacionadas a segurança e cem não relacionadas. Estas mensagens foram manualmente classificadas e arquivadas como arquivo CSV, assim como apresentado na Figura 1.
+\section{Obtenção dos Dados}
 
-A cada linha se tem a classificação e então o texto determinante da classificação recebida, security ou not.
+Projetos \textit{OpenSource} são, por essência, públicos na Internet, e por este motivo, suas \textit{issues} também estão dispostas de forma pública.
 
-\section{Experimentos}
+Para a geração dos dados de treinamento e testes, foram coletados e classificados (de forma manual) algumas \textit{issues} aleatórias dos projetos: \textit{https://github.com/square/okhttp/}, \textit{https://github.com/eclipse/jgit} e \textit{https://github.com/couchbase}
 
-Para o início dos experimentos envolvendo os dados propostos, o uso da aprendizagem de máquina se faz necessário algumas etapas essenciais. Nas próximas seções, estas etapas serão detalhadas.
+Estes dados foram organizados em arquivos no formato CSV que possuem basicamente 2 colunas. A primeira coluna indica se a \textit{issue} é um tópico relacionado a segurança ou não, e a segunda coluna representa de fato o texto coletado.
 
-\subsection{Conversão de Textos}
+Algumas linhas dos arquivos extraídos podem ser vistas no Código \ref{code:csv_example}
 
-Nesta parte do processo é utilizada a técnica conhecida como Bag-of-Words, as sentenças serão representadas através da identificação de suas palavras e a quantidade que aparecem.
-Por exemplo: My dog’s name is Rex.
-Na Figura 2 é feita a identificação e relação de cada palavra da frase.
+\begin{lstlisting}[caption={CSV Exemplo com Base de Dados},captionpos=b,frame=single,label={code:csv_example}]
+security,We are able to access the SSLSocketFactory from the OkHttpClient...
+security,PushObserver can be used to push serverinitiated HTTP/2 requests into an OkResponseCache...
+not,Handle LOCKED in conversions.Motivation...
+\end{lstlisting}
 
-Na Figura 3, é possível observar a relação de identificação da palavra e a quantidade.
+Para a fonte de dados de treinamento foram inseridas 199 entradas, enquanto que para a base de teste foram utilizadas 211 entradas.
 
-Após identificadas todas as palavras das sentenças, se tem a quantidade que as palavras se apresentam nos textos, o que será útil para a classificação.
+\section{Pré-processamento}
 
-\subsection{Sanitização da Entrada}
+Após a obtenção dos dados, é importante a realização de algumas etapas de pré-processamento do texto, estes tratamentos procuram maximizar a representatividade das \textit{issues} em questão de acordo com o seu significado.
 
-Para identificação de palavras-chave no contexto descoberto, é necessário remover palavras que não representam o contexto das frases ou ainda palavras semelhantes que se representam da mesma forma. Algumas das técnicas aplicadas:
+Para isso, é necessário remover palavras que não representam o contexto das frases. Com esse objetivo, aplicou-se algumas técnicas para cada uma das frases da base de treinamento e testes.
 
-\begin{itemize}
-    \item Transformar todo texto em minúsculo, assim não terá variações por casos de maiúsculo e minúsculo;
+As regras aplicadas foram:
+
+\begin{enumerate}
+    \item Transformar todo texto em minúsculo;
     \item Ignorar pontuações;
     \item Corrigir palavras com ortografia incorreta;
-    \item Remover as chamadas stop words que não acrescentam informação aos textos, por exemplo:  of, a, in, on, etc;
-\end{itemize}
+    \item Remover as chamadas \textit{stop words} que não acrescentam informação aos textos, por exemplo: \textit{of, a, in, on}.
+\end{enumerate}
 
-\subsection{Importância da Palavra}
+Para a aplicação das regras criou-se uma função de preparação do \textit{dataset} que foi aplicada tanto na base de testes quanto na base de treinamento.
 
-Com os vetores de palavras formados com a identificação e a quantidade, é possível aplicar a técnica de TF-IDF (term frequency-inverce document frequency). A técnica pretende refletir quão importante uma palavra é ao documento. O valor de tf-idf aumenta proporcionalmente conforme o número de vezes a palavra aparece no texto e é compensado pelo número de textos na base de dados, ajustando o número da frequência das palavras.
+\section{Extração de Características}
 
-\section{Resultados}
+Para a extração de características, utiliza-se uma técnica conhecida como \textit{Bag-of-Words}. Nesta técnica, as sentenças são representadas através da identificação de suas palavras e a quantidade em que aparecem no texto. Por exemplo, considerando o seguinte text, escrito por \textit{Charles Dickens}:
+
+\begin{quote}
+    It was the best of times,\\
+    It was the wost of times,\\
+    It was the age of wisdom,\\
+    It was the age of follishness.
+\end{quote}
+
+Deve-se considerar palavras únicas, neste caso teríamos um vocabulário com 10 palavras: [it, was,
+the, best, of, times, worst, age, wisdom, foolishness]
+
+Na sequência deve-se criar os vetores que representam a quantidade de aparições de uma palavra no texto. Por exemplo, no documento ``It was the age of wisdom'' pode-se representar através de um vetor dado por: $[1, 1, 1, 0, 1, 0, 0, 1, 1, 0]$. Se novas frases, com palavras fora do vocabulário definido forem adicionadas, então essas serão descartadas.
+
+Com os vetores de palavras formados com a identificação e a quantidade, é possível aplicar a técnica de \textit{TF-IDF (term frequency-inverce document frequency)}. Nesta abordagem, valoriza-se o quão importante uma palavra é ao documento. O valor de \textit{TF-IDF} aumenta proporcionalmente conforme o número de vezes a palavra aparece no texto e é compensado pelo número de textos na base de dados, ajustando o número da frequência das palavras.
+
+Basicamente para cada uma das \textit{issues} já sanitizadas aplica-se uma contagem das palavras mais relevantes para o problema em questão. Essas palavras foram obtidas a partir de uma contagem das palavras que mais apareciam nas \textit{issues} que eram relacionadas à segurança.
+
+Obteve-se as seguintes palavras: ['security', 'secure', 'vulnerable', 'leak', 'exception', 'crash', 'malicious',
+'sensitive', 'user', 'authentication', 'protect', 'vulnerability', 'authenticator', 'auth', 'npe']
+
+Após a aplicação destas técnicas, obtém-se 4 vetores que serão utilizados nas próximas fases do experimento. São eles: (x\_train, y\_train, x\_test, y\_test)
+
+\section{Orquestrador de Classificadores}
+
+Essencialmente em problemas que podem envolver diferentes classificadores, é bastante comum a realização dos experimentos em diferentes abordagens, utilizando classificadores diferentes, e para cada um dos classificadores, parâmetros diferentes.
+
+Com o intúito de automatizar o processo de variação entre os experimentos, desenvolveu-se um sistmea orquestrador de classificadores.
+
+Este sistema utiliza um arquivo no forma \textit{JSON} para definir 2 principais blocos: configurações e experimentos.
+
+No bloco de configurações, é possível definir quais serão os arquivos de entrada e saída para a realização dos experimentos. Já no bloco de experimentos define-se um \textit{array} com todos os experimentos a serem realizados.
+
+Um exemplo do arquivo de orquestração pode ser visto no Código \ref{code:orquestrador}.
+
+\begin{lstlisting}[caption={JSON do Orquestrador},captionpos=b,frame=single,label={code:orquestrador}]
+{
+    "configs": {
+        "train": "data/train.csv",
+        "test": "data/test.csv",
+        "result_classifiers": "results/classifiers/tabulation_{timestamp}.csv",
+        "result_conf_mat": "results/conf_mat/"
+    },
+    "experiments": [
+        {
+        "classifier": "svm",
+        "parameters": {}
+        },
+        {
+        "classifier": "knn",
+        "parameters": {
+            "n_neighbors": 7
+        }
+        ...
+    ]
+}
+\end{lstlisting}
+
+O sistema desenvolvido também armazena automaticamente em um arquivo no formato CSV os resultados para cada um dos experimentos. Os campos salvos são: Classifier, F1Score, Accuracy e Execution Time (s). Além disso, para cada execução são armazenadas as matrizes de confusão como imagens e também como arquivos CSV.
+
+\section{Resultados Obtidos}
 
 \section{Conclusão}
 
-\cite{IEEEexample:confwithvolume}.
+\section{Trabalhos Futuros}
+
+Para aumentar a base de treinamento pode-se desenvolver um programa que extrai automaticamente informações de issues de repositórios do GitHub marcados com uma label que contenha informações relacionadas a segurança.
+
+Também é possível a criação de uma API que retorne se uma mensagem é ou não referente a segurança, que poderia ser utilizada em outros contextos.
+
+\section{Código Fonte}
+
+O código fonte dos experimentos pode ser acessado em: https://github.com/bmphx2/aprendizagem-de-maquina
 
 \bibliographystyle{IEEEtran}
 \bibliography{IEEEabrv,IEEEexample.bib}

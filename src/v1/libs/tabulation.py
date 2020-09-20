@@ -16,8 +16,7 @@ def save_tabulation_row(tabulation_writer, row):
 
 
 def get_output_table(configs, experiment_hash):
-    header = ['Classifier', 'F1Score', 'Accuracy',
-              'Precision', 'Recall', 'Execution Time (s)']
+    header = ['Classifier', 'F1Score', 'Accuracy', 'Execution Time (s)']
     file_name = configs["result_classifiers"].replace(
         "{timestamp}", experiment_hash)
     tabulation_writer, tabulation_file = get_tabulation(file_name, header)
