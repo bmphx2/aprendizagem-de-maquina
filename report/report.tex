@@ -75,7 +75,7 @@ Propõe-se a criação de uma ferramenta que utilize técnicas de aprendizagem d
 
 Para criação de uma base de dados de treinamento e testes, duzentas \textit{issues} foram extraídas e classificadas dos projetos \textit{OKHTTP}, \textit{jgit} e \textit{couchbase}.
 
-Para a automatização dos experimentos, foi criado um sistema \textit{orquestrador} no qual é possível definir as instruções para a execução e coleta das evidências de todo o fluxo para os diferentes classificadores, os utilizados neste experimento foram: svm, knn, naive\_bayes, lda, logistic\_regression, perceptron, tree e mlp. Para cada um dos testes, anotou-se a acurácia, f1score, tempo de execução e sua matriz de confusão.
+Para a automatização dos experimentos, foi criado um sistema \textit{orquestrador} no qual é possível definir as instruções para a execução e coleta das evidências de todo o fluxo para os diferentes classificadores, os utilizados neste experimento foram: \textit{svm.LinearSVC}, \textit{KNeighborsClassifier}, \textit{GaussianNB}, \textit{LinearDiscriminantAnalysis}, \textit{LogisticRegression}, \textit{Perceptron}, \textit{DecisionTreeClassifier} e \textit{MLPClassifier}. Para cada um dos testes, anotou-se a acurácia, f1score, tempo de execução e sua matriz de confusão.
 
 Por fim, discute-se os resultados obtidos dos experimentos e possíveis trabalhos futuros.
 
@@ -83,25 +83,26 @@ Por fim, discute-se os resultados obtidos dos experimentos e possíveis trabalho
 
 Projetos \textit{OpenSource} são, por essência, públicos na Internet, e por este motivo, suas \textit{issues} também estão dispostas de forma pública.
 
-Para a geração dos dados de treinamento e testes, foram coletados e classificados (de forma manual) algumas \textit{issues} aleatórias dos projetos: \textit{https://github.com/square/okhttp/}, \textit{https://github.com/eclipse/jgit} e \textit{https://github.com/couchbase}
+Para a extração dos dados das \textit{issues}, tanto de treinamento quanto de testes, utilizou-se a a ferramenta \textit{github-csv-tools\footnote{https://github.com/gavinr/github-csv-tools}} que possibilita a exportação dos dados de um repositório no GitHub, e os salva em um arquivo no formato CSV.
 
-Estes dados foram organizados em arquivos no formato CSV que possuem basicamente 2 colunas. A primeira coluna indica se a \textit{issue} é um tópico relacionado a segurança ou não, e a segunda coluna representa de fato o texto coletado.
+Para a geração da base de testes, foram extraídas as \textit{issues} do projeto \textit{Wildfly\footnote{https://github.com/wildfly/wildfly}}. Já para a base de treinamento utilizou-se \textit{issues} dos projetos: \textit{https://github.com/square/okhttp/}, \textit{https://github.com/eclipse/jgit} e \textit{https://github.com/couchbase}.
 
-Algumas linhas dos arquivos extraídos podem ser vistas no Código \ref{code:csv_example}
+Estes dados foram organizados em arquivos no formato CSV que possuem 2 colunas. A primeira coluna indica se a \textit{issue} é um tópico relacionado a segurança ou não, e a segunda coluna representa de fato o texto coletado.
+
+Um exemplo abreviado de cada classe pode ser vista no Código \ref{code:csv_example}.
 
 \begin{lstlisting}[caption={CSV Exemplo com Base de Dados},captionpos=b,frame=single,label={code:csv_example}]
-security,We are able to access the SSLSocketFactory from the OkHttpClient...
 security,PushObserver can be used to push serverinitiated HTTP/2 requests into an OkResponseCache...
 not,Handle LOCKED in conversions.Motivation...
 \end{lstlisting}
 
-Para a fonte de dados de treinamento foram inseridas 199 entradas, enquanto que para a base de teste foram utilizadas 211 entradas.
+Os dados de treinamento possuem 199 entradas, enquanto que para a base de teste foram utilizadas 211 entradas.
 
 \section{Pré-processamento}
 
-Após a obtenção dos dados, é importante a realização de algumas etapas de pré-processamento do texto, estes tratamentos procuram maximizar a representatividade das \textit{issues} em questão de acordo com o seu significado.
+Após a obtenção dos dados, é importante a realização de algumas etapas de pré-processamento do texto, estes tratamentos procuram maximizar a representatividade das \textit{issues} de acordo com o seu significado.
 
-Para isso, é necessário remover palavras que não representam o contexto das frases. Com esse objetivo, aplicou-se algumas técnicas para cada uma das frases da base de treinamento e testes.
+Para isso, é necessário remover palavras que não representam o contexto das frases. Com esse objetivo, aplicou-se técnicas para cada uma das frases das \textit{issues} da base de treinamento e testes.
 
 As regras aplicadas foram:
 
@@ -116,7 +117,7 @@ Para a aplicação das regras criou-se uma função de preparação do \textit{d
 
 \section{Extração de Características}
 
-Para a extração de características, utiliza-se uma técnica conhecida como \textit{Bag-of-Words}. Nesta técnica, as sentenças são representadas através da identificação de suas palavras e a quantidade em que aparecem no texto. Por exemplo, considerando o seguinte text, escrito por \textit{Charles Dickens}:
+Para a extração de características, utiliza-se uma técnica conhecida como \textit{Bag-of-Words}. Nesta técnica, as sentenças são representadas através da identificação de suas palavras e a quantidade em que aparecem no texto. Por exemplo, considerando o seguinte texto, escrito por \textit{Charles Dickens}:
 
 \begin{quote}
     It was the best of times,\\
@@ -125,7 +126,7 @@ Para a extração de características, utiliza-se uma técnica conhecida como \t
     It was the age of follishness.
 \end{quote}
 
-Deve-se considerar palavras únicas, neste caso teríamos um vocabulário com 10 palavras: [it, was,
+Considerando palavras únicas, neste caso, teríamos um vocabulário com 10 palavras: [it, was,
 the, best, of, times, worst, age, wisdom, foolishness]
 
 Na sequência deve-se criar os vetores que representam a quantidade de aparições de uma palavra no texto. Por exemplo, no documento ``It was the age of wisdom'' pode-se representar através de um vetor dado por: $[1, 1, 1, 0, 1, 0, 0, 1, 1, 0]$. Se novas frases, com palavras fora do vocabulário definido forem adicionadas, então essas serão descartadas.
@@ -139,7 +140,7 @@ Obteve-se as seguintes palavras: ['security', 'secure', 'vulnerable', 'leak', 'e
 
 Após a aplicação destas técnicas, obtém-se 4 vetores que serão utilizados nas próximas fases do experimento. São eles: (x\_train, y\_train, x\_test, y\_test)
 
-\section{Orquestrador de Classificadores}
+\section{Orquestrador dos Exerimentos}
 
 Essencialmente em problemas que podem envolver diferentes classificadores, é bastante comum a realização dos experimentos em diferentes abordagens, utilizando classificadores diferentes, e para cada um dos classificadores, parâmetros diferentes.
 
@@ -174,17 +175,56 @@ Um exemplo do arquivo de orquestração pode ser visto no Código \ref{code:orqu
 }
 \end{lstlisting}
 
-O sistema desenvolvido também armazena automaticamente em um arquivo no formato CSV os resultados para cada um dos experimentos. Os campos salvos são: Classifier, F1Score, Accuracy e Execution Time (s). Além disso, para cada execução são armazenadas as matrizes de confusão como imagens e também como arquivos CSV.
+Para cada uma das ocorrências no vetor de experimentos, o programa desenvolvido utiliza implementações do \textit{framework} \textit{\footnote{https://scikit-learn.org/}scikit-learn} para o treinamento do classificador. Utlizando como fonte de dados, as entradas já tratados anteriormente (x\_train, y\_train, x\_test, y\_test). Os resultados são armazenados automaticamente em um arquivo no formato CSV que tabula os resultados obtidos em cada um dos experimentos. Os campos salvos são: \textit{Classifier, F1Score, Accuracy e Time (s)}. Além disso, para cada execução são armazenadas as matrizes de confusão como imagens e também como arquivos CSV.
 
 \section{Resultados Obtidos}
+
+O orquestrador dos experimentos foi configurado para executar os experimentos com os classificadores: \textit{svm.LinearSVC}, \textit{KNeighborsClassifier}, \textit{GaussianNB}, \textit{LinearDiscriminantAnalysis}, \textit{LogisticRegression}, \textit{Perceptron}, \textit{DecisionTreeClassifier} e \textit{MLPClassifier}.
+
+Os parâmetros utilizados foram os default em cada um dos classificadores. Com a exeção do \textit{KNeighborsClassifier} em que se testou com \textit{n\_neighbors: 7} e \textit{LogisticRegression} que se utilizou \textit{solver: lbfgs}.
+
+Os resultados obtidos estão dispostos na Tabela \ref{tab:resultados_experimentos}.
+
+\begin{table}[!htb]
+    \centering
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+        \textbf{Classifier}        & \textbf{Accuracy} & \textbf{F1Score} & \textbf{Time (s)} \\ \hline
+        LinearDiscriminantAnalysis & 0.867             & 0.865            & 0.183             \\ \hline
+        LogisticRegression         & 0.867             & 0.865            & 0.191             \\ \hline
+        DecisionTreeClassifier     & 0.867             & 0.865            & 0.193             \\ \hline
+        MLPClassifier              & 0.867             & 0.865            & 0.302             \\ \hline
+        svm.LinearSVC              & 0.867             & 0.865            & 1.903             \\ \hline
+        Perceptron                 & 0.862             & 0.861            & 0.17              \\ \hline
+        KNeighborsClassifier       & 0.533             & 0.696            & 0.229             \\ \hline
+        GaussianNB                 & 0.471             & 0.307            & 0.192             \\ \hline
+    \end{tabular}
+    \vspace{0.2cm}
+    \caption{Resultados dos Experimentos}
+    \label{tab:resultados_experimentos}
+\end{table}
+
+As matrizes de confusão dos classificadores: \textit{DecisionTreeClassifier}, \textit{GaussianNB} \textit{KNeighborsClassifier} e \textit{LinearDiscriminantAnalysis} estão dispostas na Figura \ref{fig:conf_mat_1}. Já para os classificadores: \textit{svm.LinearSVC}, \textit{LogisticRegression}, \textit{MLPClassifier} e \textit{Perceptron} as representações estão dispostas na Figura \ref{fig:conf_mat_2}.
+
+\begin{figure}[htbp]
+    \centerline{\includegraphics[width=28em]{images/conf_mat_1.png}}
+    \caption{Matrizes de Confusão 1}
+    \label{fig:conf_mat_1}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centerline{\includegraphics[width=28em]{images/conf_mat_2.png}}
+    \caption{Matrizes de Confusão 2}
+    \label{fig:conf_mat_2}
+\end{figure}
 
 \section{Conclusão}
 
 \section{Trabalhos Futuros}
 
-Para aumentar a base de treinamento pode-se desenvolver um programa que extrai automaticamente informações de issues de repositórios do GitHub marcados com uma label que contenha informações relacionadas a segurança.
+Para aumentar a base de treinamento, pode-se desenvolver um programa que extrai automaticamente informações de issues de repositórios do GitHub marcados com um \textit{label} que contenha informações relacionadas a segurança. O GitHub, oferece uma API que possibilita a extração de informações no formato JSON, o que facilitaria este processo. É possível notar que em alguns projetos, existem issues pré-classificadas com labels, como é o exemplo do repositório do projeto Angular, disponível em: https://github.com/angular/angular/labels?q=sec.
 
-Também é possível a criação de uma API que retorne se uma mensagem é ou não referente a segurança, que poderia ser utilizada em outros contextos.
+Ainda é possível evoluir a ideia do classificador para a criação de uma API que retorne se uma mensagem é ou não referente a segurança, que poderia ser utilizada em outros contextos.
 
 \section{Código Fonte}
 

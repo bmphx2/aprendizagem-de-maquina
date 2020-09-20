@@ -15,6 +15,10 @@ nltk.download('stopwords')
 
 ## TODO
 
+- Ferramenta para obtenção dos dados https://github.com/gavinr/github-csv-tools
+
+- a base de teste é do Wildfly, os de treinamento sao dos couch base, jgit, e okhttp
+
 - list of words, veio de uma checagem de palavras que mais apareciam nos textos dos commits que eram de segurança...
 
 ```
