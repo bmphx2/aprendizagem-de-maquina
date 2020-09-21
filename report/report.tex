@@ -59,33 +59,35 @@
 
 \section{Introdução}
 
-O controle, gerenciamento e manutenção de arquivos, especialmente no âmbito do desenvolvimento de \textit{software}, sempre foi um desafio. Problemas recorrentes como: backups não realizados, sobrescritas de arquivos, dificil manutenabilidade de projetos desenvolvidos em equipes, são motivações para a utilização de algum sistema de versionamento de arquivos. \cite{Scott:ProGit}
+O controle, gerenciamento e manutenção de arquivos, especialmente no âmbito do desenvolvimento de \textit{software}, sempre foi um desafio. Problemas recorrentes como: \textit{backups} não realizados, sobrescrita de arquivos ou dificil manutenabilidade de projetos desenvolvidos em equipes, são algumas das motivações para a utilização de algum sistema de versionamento de arquivos. \cite{Scott:ProGit}
 
-Dentre as várias ferramentas existenstes no mercado, como por exemplo: CVS, Subversion, TFS, Mercurial, o Git se destaca por ter sido amplamente utilizado pela comunidade de desenvolvimento, com o advento da popularização dos projetos OpenSource. Estes projetos se consolidaram em com ferramentas como o GitHub que é uma plataforma para versionamento, gerenciamento e colaboração de projetos, que utiliza o Git como base.
+Dentre as várias ferramentas existenstes no mercado, tais como: \textit{CVS}, \textit{Subversion}, \textit{TFS}, \textit{Mercurial}, o \textit{Git} se destaca por ter sido amplamente utilizado pela comunidade de desenvolvimento, com o advento da popularização dos projetos \textit{OpenSource}. Estes projetos se consolidaram em ferramentas como o \textit{GitHub} que é uma plataforma para versionamento, gerenciamento e colaboração de projetos, que utiliza o \textit{Git} como base. \cite{Scott:ProGit}
 
-São várias as possibilidades que essas ferramentas proporcionam para verionamento dos projetos, no GitHub, por exemplo, existe uma sessão de \textit{issues} (problemas) na qual, os colaboradores de um projeto \textit{Open Source} podem cadastrar possíveis \textit{bugs}, melhorias, ou novas features para os projetos compartilhados entre os usuários colaboradores.
+São várias as possibilidades que essas ferramentas proporcionam para verionamento dos projetos, no \textit{GitHub}, por exemplo, existe uma sessão de \textit{issues} (problemas) na qual, os colaboradores de um projeto \textit{Open Source} podem cadastrar possíveis \textit{bugs}, melhorias, ou novas \textit{features} para os projetos.
 
-Na descrição dessas \textit{issues} feita através do preenchimento de um campo de texto, é possível identificar qual é o contexto em que se aplica determinada correção.
+Na descrição dessas \textit{issues} feita através do preenchimento de um campo de texto, é possível identificar qual é o contexto em que se aplica determinada correção, melhoria ou \textit{feature}.
 
-Eventualmente, dentre as correções realizadas nestes projetos, são identificados ajustes relacionados a segurança. Essa issues, quando consideradas críticas, podem ser analisadas por outros especialistas para uma arguição mais detalhada e um possível aprimoramento.
+Eventualmente, dentre as correções realizadas nestes projetos, são identificados ajustes relacionados a segurança. Estas \textit{issues}, quando consideradas críticas, podem ser analisadas por outros especialistas para uma arguição mais detalhada e um possível aprimoramento.
 
 Mas como identificar quais são os ajustes de um projeto que estão relacionados com segurança? Como separar estes ajustes para que especialistas possam analisar os cógidos? Essas perguntas guiam a motivação para o desenvolvimento deste trabalho.
 
-Propõe-se a criação de uma ferramenta que utilize técnicas de aprendizagem de máquina para a criação de um oráculo classificador que consiga analisar as palavras contidas em uma mensagem de issue, e classificar se esta issue está ou não relacionada à uma implementação de segurança.
-
-Para criação de uma base de dados de treinamento e testes, duzentas \textit{issues} foram extraídas e classificadas dos projetos \textit{OKHTTP}, \textit{jgit} e \textit{couchbase}.
-
-Para a automatização dos experimentos, foi criado um sistema \textit{orquestrador} no qual é possível definir as instruções para a execução e coleta das evidências de todo o fluxo para os diferentes classificadores, os utilizados neste experimento foram: \textit{svm.LinearSVC}, \textit{KNeighborsClassifier}, \textit{GaussianNB}, \textit{LinearDiscriminantAnalysis}, \textit{LogisticRegression}, \textit{Perceptron}, \textit{DecisionTreeClassifier} e \textit{MLPClassifier}. Para cada um dos testes, anotou-se a acurácia, f1score, tempo de execução e sua matriz de confusão.
+Propõe-se a criação de uma ferramenta que utilize técnicas de aprendizagem de máquina para a criação de um oráculo classificador que consiga analisar as palavras contidas em nas mensagens das \textit{issues} de um dado projeto, e classificar se esta \textit{issue} está ou não relacionada à alguma implementação relacionada com segurança da informação.
 
 Por fim, discute-se os resultados obtidos dos experimentos e possíveis trabalhos futuros.
 
 \section{Obtenção dos Dados}
 
-Projetos \textit{OpenSource} são, por essência, públicos na Internet, e por este motivo, suas \textit{issues} também estão dispostas de forma pública.
+Projetos \textit{OpenSource} são, por essência, públicos na Internet, e por este motivo, suas \textit{issues} também estão dispostas de forma pública. A análise dessas mensagens faz parte da evolução dos projetos, nos quais os colaboradores podem entender os problemas, sugerir, implementar e finalizar os problemas encontrados.
 
-Para a extração dos dados das \textit{issues}, tanto de treinamento quanto de testes, utilizou-se a a ferramenta \textit{github-csv-tools\footnote{https://github.com/gavinr/github-csv-tools}} que possibilita a exportação dos dados de um repositório no GitHub, e os salva em um arquivo no formato CSV.
+A Figura \ref{fig:issues_example} mostra um exemplo de algumas issues do projeto Vue.js.
 
-Para a geração da base de testes, foram extraídas as \textit{issues} do projeto \textit{Wildfly\footnote{https://github.com/wildfly/wildfly}}. Já para a base de treinamento utilizou-se \textit{issues} dos projetos: \textit{https://github.com/square/okhttp/}, \textit{https://github.com/eclipse/jgit} e \textit{https://github.com/couchbase}.
+\begin{figure}[htbp]
+    \centerline{\includegraphics[width=25em]{images/issues_example.png}}
+    \caption{Exemplos de Issues do Projeto Vue.js}
+    \label{fig:issues_example}
+\end{figure}
+
+Para a extração dos dados das \textit{issues}, tanto para a base de treinamento quanto de para a base de testes, utilizou-se a a ferramenta \textit{github-csv-tools\footnote{https://github.com/gavinr/github-csv-tools}} que possibilita a exportação dos dados de um repositório no \textit{GitHub}, e os salva em um arquivo no formato CSV.
 
 Estes dados foram organizados em arquivos no formato CSV que possuem 2 colunas. A primeira coluna indica se a \textit{issue} é um tópico relacionado a segurança ou não, e a segunda coluna representa de fato o texto coletado.
 
@@ -96,7 +98,9 @@ security,PushObserver can be used to push serverinitiated HTTP/2 requests into a
 not,Handle LOCKED in conversions.Motivation...
 \end{lstlisting}
 
-Os dados de treinamento possuem 199 entradas, enquanto que para a base de teste foram utilizadas 211 entradas.
+Para a geração da base de testes, foram extraídas as \textit{issues} do projeto \textit{Wildfly\footnote{https://github.com/wildfly/wildfly}}. Já para a base de treinamento utilizou-se \textit{issues} dos projetos: \textit{https://github.com/square/okhttp/}, \textit{https://github.com/eclipse/jgit} e \textit{https://github.com/couchbase}.
+
+Os dados de treinamento possuem \textbf{199} entradas, enquanto que para a base de teste foram utilizadas \textbf{211} entradas.
 
 \section{Pré-processamento}
 
@@ -113,11 +117,9 @@ As regras aplicadas foram:
     \item Remover as chamadas \textit{stop words} que não acrescentam informação aos textos, por exemplo: \textit{of, a, in, on}.
 \end{enumerate}
 
-Para a aplicação das regras criou-se uma função de preparação do \textit{dataset} que foi aplicada tanto na base de testes quanto na base de treinamento.
-
 \section{Extração de Características}
 
-Para a extração de características, utiliza-se uma técnica conhecida como \textit{Bag-of-Words}. Nesta técnica, as sentenças são representadas através da identificação de suas palavras e a quantidade em que aparecem no texto. Por exemplo, considerando o seguinte texto, escrito por \textit{Charles Dickens}:
+Para a extração de características das bases de dados, utiliza-se uma técnica conhecida como \textit{Bag-of-Words} \textbf{Adicionar Referência}. Nesta técnica, as sentenças são representadas através da identificação de suas palavras e a quantidade em que aparecem no texto. Por exemplo, considerando o seguinte texto, escrito por \textit{Charles Dickens}:
 
 \begin{quote}
     It was the best of times,\\
@@ -126,12 +128,11 @@ Para a extração de características, utiliza-se uma técnica conhecida como \t
     It was the age of follishness.
 \end{quote}
 
-Considerando palavras únicas, neste caso, teríamos um vocabulário com 10 palavras: [it, was,
-the, best, of, times, worst, age, wisdom, foolishness]
+Considerando palavras únicas, neste caso, teríamos um vocabulário com 10 palavras: [it, was, the, best, of, times, worst, age, wisdom, foolishness]
 
 Na sequência deve-se criar os vetores que representam a quantidade de aparições de uma palavra no texto. Por exemplo, no documento ``It was the age of wisdom'' pode-se representar através de um vetor dado por: $[1, 1, 1, 0, 1, 0, 0, 1, 1, 0]$. Se novas frases, com palavras fora do vocabulário definido forem adicionadas, então essas serão descartadas.
 
-Com os vetores de palavras formados com a identificação e a quantidade, é possível aplicar a técnica de \textit{TF-IDF (term frequency-inverce document frequency)}. Nesta abordagem, valoriza-se o quão importante uma palavra é ao documento. O valor de \textit{TF-IDF} aumenta proporcionalmente conforme o número de vezes a palavra aparece no texto e é compensado pelo número de textos na base de dados, ajustando o número da frequência das palavras.
+Com os vetores de palavras formados com a identificação e a quantidade, é possível aplicar a técnica de \textit{TF-IDF (term frequency-inverce document frequency)}.  Nesta abordagem, valoriza-se o quão importante uma palavra é ao documento. O valor de \textit{TF-IDF} aumenta proporcionalmente conforme o número de vezes a palavra aparece no texto e é compensado pelo número de textos na base de dados, ajustando o número da frequência das palavras. \textbf{Adicionar Referência}
 
 Basicamente para cada uma das \textit{issues} já sanitizadas aplica-se uma contagem das palavras mais relevantes para o problema em questão. Essas palavras foram obtidas a partir de uma contagem das palavras que mais apareciam nas \textit{issues} que eram relacionadas à segurança.
 
@@ -157,19 +158,16 @@ Um exemplo do arquivo de orquestração pode ser visto no Código \ref{code:orqu
     "configs": {
         "train": "data/train.csv",
         "test": "data/test.csv",
-        "result_classifiers": "results/classifiers/tabulation_{timestamp}.csv",
-        "result_conf_mat": "results/conf_mat/"
     },
     "experiments": [
         {
-        "classifier": "svm",
-        "parameters": {}
+        "classifier": "logistic_regression",
+        "parameters": {"solver": "lbfgs"}
         },
         {
         "classifier": "knn",
-        "parameters": {
-            "n_neighbors": 7
-        }
+        "parameters": {"n_neighbors": 7}
+        },
         ...
     ]
 }
@@ -220,11 +218,25 @@ As matrizes de confusão dos classificadores: \textit{DecisionTreeClassifier}, \
 
 \section{Conclusão}
 
+Como é possível observar na Tabela \ref{tab:resultados_experimentos} os classificadores que utilizaram os algorítmos: \textit{LinearDiscriminantAnalysis}, \textit{LogisticRegression}, \textit{DecisionTreeClassifier}, \textit{MLPClassifier}, \textit{svm.LinearSVC} e \textit{Perceptron} tiveram resultados bastante semelhantes, com uma taxa de acurácia em torno de $0.86$ e um f1score também por volta de $0.86$. A duração do processo de classificação (anotada pela coluna Time (s)) demostram que para o volume de dados utilizado todos tem um tempo de treinamento bem baixo, retornando o resultado em menos de 2 segundos no pior caso.
+
+Para o classificador \textit{KNeighborsClassifier} obteve-se um resultado bastante insatisfatório, com acurácia de $0.53$ e f1score de $0.69$. Isso se deve \textbf{completar...}
+
+Já para o classificador \textit{GaussianNB} também obteve-se um resultado bastante insatisfatório, com acurácia de $0.47$ e f1score de $0.3$., e isso se deve \textbf{completar...}
+
+Com relação às matrizes de confusão da Figura \ref{fig:conf_mat_1}, pode-se notar que para os algorítmos \textit{DecisionTreeClassifier} e \textit{LinearDiscriminantAnalysis} obteve-se a mesma quantidade de erros, e isso se deve \textbf{completar...}
+
+Ainda nas matrizes da Figura \ref{fig:conf_mat_1}, nota-se que para os piores classificadores (neste problema) \textit{KNeighborsClassifier} e \textit{GaussianNB} houveram vários erros que praticamente anulam a eficiência do classificador.
+
+Com relação às matrizes da Figura \ref{fig:conf_mat_2} é possível notar que praticament o mesmo número de erros foi encontrado, muito provavelmente nos mesmo exemplos.
+
 \section{Trabalhos Futuros}
 
-Para aumentar a base de treinamento, pode-se desenvolver um programa que extrai automaticamente informações de issues de repositórios do GitHub marcados com um \textit{label} que contenha informações relacionadas a segurança. O GitHub, oferece uma API que possibilita a extração de informações no formato JSON, o que facilitaria este processo. É possível notar que em alguns projetos, existem issues pré-classificadas com labels, como é o exemplo do repositório do projeto Angular, disponível em: https://github.com/angular/angular/labels?q=sec.
+A grande dificuldade encontrada no projeto foi a obtenção de uma base de dados rotulada. Toda a base utilizada foi tratada de forma manual.
 
-Ainda é possível evoluir a ideia do classificador para a criação de uma API que retorne se uma mensagem é ou não referente a segurança, que poderia ser utilizada em outros contextos.
+Para aumentar a base de treinamento de uma forma automatizada, propõe-se no futuro o desenvolvimento de um programa capaz de extrair automaticamente informações de \textit{issues} de repositórios do \textit{GitHub} marcados com um \textit{label} que contenha palavras relacionadas à segurança. O \textit{GitHub}, oferece uma API que possibilita a extração de informações dos projetos no formato JSON, o que facilitaria este processo. É possível notar que em alguns projetos, existem \textit{issues} pré-classificadas com \textit{labels}, como é o exemplo do repositório do projeto Angular, disponível em: https://github.com/angular/angular/labels?q=sec.
+
+Outra estratégia poderia ser a aplicação de técnicas de \textit{Data Augmentation} para possibilitar a criação de características de forma sintéticas, refinando ainda mais os classificadores testados.
 
 \section{Código Fonte}
 
