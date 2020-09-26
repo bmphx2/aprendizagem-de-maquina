@@ -1,0 +1,9 @@
+\frametitle{Obtenção dos Dados}
+  \begin{itemize}
+    \item Utilizou-se o \textit{github-csv-tools\footnote{https://github.com/gavinr/github-csv-tools}} que possibilita a exportação dos dados de um repositório do \textit{GitHub}, salvando as informações em um arquivo no formato CSV.
+    \item Dados tratados para um CSV com 2 colunas:
+  \end{itemize}
+  \begin{lstlisting}[caption={CSV Exemplo com Base de Dados},captionpos=b,frame=single,label={code:csv_example}]
+    security,PushObserver can be used to push serverinitiated HTTP/2 requests into an OkResponseCache...
+    not,Handle LOCKED in conversions.Motivation...
+    \end{lstlisting}

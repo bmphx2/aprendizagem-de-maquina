@@ -32,7 +32,7 @@
 
 \begin{document}
 
-\title{Classificação de Issues do Github com Relação a Segurança}
+\title{Classificação de \textit{issues} do Github relacionadas a Segurança}
 
 \author{\IEEEauthorblockN{1\textsuperscript{st} Bruno Gonçalves de Oliveira}
     \IEEEauthorblockA{
@@ -50,7 +50,7 @@
 \maketitle
 
 \begin{abstract}
-    As \textit{issues} do GitHub representam grande parte da evolução dos projetos \textit{OpenSource}. Este trabalho propõe uma solução para classificar \textit{issues} que podem ou não estar relacionadas a segurança da informação. As mensagens serão analisadas utilizando as palavras frequentes em textos referentes à segurança. Utiliza-se a técnica de \textit{Bag-of-Words} em conjunto com \textit{TF-IDF} para a criação dos vetores de representação. Na sequência, múltiplos classificadores foram utilizados, entre eles: svm, knn, naive\_bayes, lda, logistic\_regression, perceptron, tree e mlp. Os resultados obtidos apresentam uma acurácia superior a 80\%.
+    As \textit{issues} do GitHub representam grande parte da evolução dos projetos \textit{OpenSource}. Este trabalho propõe uma solução para classificar \textit{issues} que podem ou não estar relacionadas a segurança da informação. As mensagens serão analisadas utilizando as palavras frequentes em textos referentes a segurança. Utiliza-se a técnica de \textit{Bag-of-Words} em conjunto com \textit{TF-IDF} para a criação do \textit{dataset} de representação. Na sequência, experimentos com  classificadores foram realizados para explorar qual a melhor ténica a ser adodata para o problema em questão. Os melhores resultados apresentam uma acurácia superior a 80\%, o que demonstra que as soluções exploradas são plausíveis e podem ser melhoradas como é explorado na seção de trabalho futuros.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -61,23 +61,23 @@
 
 O controle, gerenciamento e manutenção de arquivos, especialmente no âmbito do desenvolvimento de \textit{software}, sempre foi um desafio. Problemas recorrentes como: \textit{backups} não realizados, sobrescrita de arquivos ou dificil manutenabilidade de projetos desenvolvidos em equipes, são algumas das motivações para a utilização de algum sistema de versionamento de arquivos. \cite{Scott:ProGit}
 
-Dentre as várias ferramentas existenstes no mercado, tais como: \textit{CVS}, \textit{Subversion}, \textit{TFS}, \textit{Mercurial}, o \textit{Git} se destaca por ter sido amplamente utilizado pela comunidade de desenvolvimento, com o advento da popularização dos projetos \textit{OpenSource}. Estes projetos se consolidaram em ferramentas como o \textit{GitHub} que é uma plataforma para versionamento, gerenciamento e colaboração de projetos, que utiliza o \textit{Git} como base. \cite{Scott:ProGit}
+Dentre as várias ferramentas existenstes no mercado, tais como: \textit{CVS}, \textit{Subversion}, \textit{TFS}, \textit{Mercurial}, o \textit{Git} se destaca por ter sido amplamente utilizado pela comunidade de desenvolvimento, com o advento da popularização dos projetos \textit{Open Source}. Tais projetos se consolidaram em ferramentas como o \textit{GitHub} que é uma plataforma para versionamento, gerenciamento e colaboração de projetos, que utiliza o \textit{Git} como base. \cite{Scott:ProGit}
 
 São várias as possibilidades que essas ferramentas proporcionam para verionamento dos projetos, no \textit{GitHub}, por exemplo, existe uma sessão de \textit{issues} (problemas) na qual, os colaboradores de um projeto \textit{Open Source} podem cadastrar possíveis \textit{bugs}, melhorias, ou novas \textit{features} para os projetos.
 
-Na descrição dessas \textit{issues} feita através do preenchimento de um campo de texto, é possível identificar qual é o contexto em que se aplica determinada correção, melhoria ou \textit{feature}.
+Na descrição dessas \textit{issues}, feita através do preenchimento de um campo de texto, é possível identificar qual é o contexto em que se aplica determinada correção, melhoria ou \textit{feature}.
 
 Eventualmente, dentre as correções realizadas nestes projetos, são identificados ajustes relacionados a segurança. Estas \textit{issues}, quando consideradas críticas, podem ser analisadas por outros especialistas para uma arguição mais detalhada e um possível aprimoramento.
 
 Mas como identificar quais são os ajustes de um projeto que estão relacionados com segurança? Como separar estes ajustes para que especialistas possam analisar os cógidos? Essas perguntas guiam a motivação para o desenvolvimento deste trabalho.
 
-Propõe-se a criação de uma ferramenta que utilize técnicas de aprendizagem de máquina para a criação de um oráculo classificador que consiga analisar as palavras contidas em nas mensagens das \textit{issues} de um dado projeto, e classificar se esta \textit{issue} está ou não relacionada à alguma implementação relacionada com segurança da informação.
+Propõe-se a criação de uma ferramenta que utilize técnicas de aprendizagem de máquina para o desenvolvimento de um oráculo classificador que consiga analisar as palavras contidas nas mensagens das \textit{issues} de um dado projeto, e classificar se esta \textit{issue} está ou não relacionada no contexto de segurança da informação.
 
 Por fim, discute-se os resultados obtidos dos experimentos e possíveis trabalhos futuros.
 
 \section{Obtenção dos Dados}
 
-Projetos \textit{OpenSource} são, por essência, públicos na Internet, e por este motivo, suas \textit{issues} também estão dispostas de forma pública. A análise dessas mensagens faz parte da evolução dos projetos, nos quais os colaboradores podem entender os problemas, sugerir, implementar e finalizar os problemas encontrados.
+Projetos \textit{Open Source} são, por essência, públicos na Internet, e por este motivo, suas \textit{issues} também estão dispostas de forma pública. A análise dessas mensagens faz parte da evolução dos projetos, nos quais os colaboradores podem entender os problemas, sugerir, implementar e finalizar os problemas encontrados.
 
 A Figura \ref{fig:issues_example} mostra um exemplo de algumas issues do projeto Vue.js.
 
@@ -87,9 +87,9 @@ A Figura \ref{fig:issues_example} mostra um exemplo de algumas issues do projeto
     \label{fig:issues_example}
 \end{figure}
 
-Para a extração dos dados das \textit{issues}, tanto para a base de treinamento quanto de para a base de testes, utilizou-se a a ferramenta \textit{github-csv-tools\footnote{https://github.com/gavinr/github-csv-tools}} que possibilita a exportação dos dados de um repositório no \textit{GitHub}, e os salva em um arquivo no formato CSV.
+Para a extração dos dados das \textit{issues}, tanto para a base de treinamento quanto de para a base de testes, utilizou-se a a ferramenta \textit{github-csv-tools\footnote{https://github.com/gavinr/github-csv-tools}} que possibilita a exportação dos dados de um repositório do \textit{GitHub}, salvando as informações em um arquivo no formato CSV.
 
-Estes dados foram organizados em arquivos no formato CSV que possuem 2 colunas. A primeira coluna indica se a \textit{issue} é um tópico relacionado a segurança ou não, e a segunda coluna representa de fato o texto coletado.
+Os dados foram refinados para compor um arquivo CSV com 2 colunas. A primeira  indica se a \textit{issue} é um tópico relacionado a segurança ou não, e a segunda coluna representa de fato o texto coletado.
 
 Um exemplo abreviado de cada classe pode ser vista no Código \ref{code:csv_example}.
 
@@ -106,7 +106,7 @@ Os dados de treinamento possuem \textbf{199} entradas, enquanto que para a base 
 
 Após a obtenção dos dados, é importante a realização de algumas etapas de pré-processamento do texto, estes tratamentos procuram maximizar a representatividade das \textit{issues} de acordo com o seu significado.
 
-Para isso, é necessário remover palavras que não representam o contexto das frases. Com esse objetivo, aplicou-se técnicas para cada uma das frases das \textit{issues} da base de treinamento e testes.
+Para isso, é necessário remover palavras que não representam o contexto das frases. Com esse objetivo, aplica-se técnicas de sanitização para a base de treinamento e testes.
 
 As regras aplicadas foram:
 
