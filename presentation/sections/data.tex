@@ -1,0 +1,22 @@
+\section[Obtenção dos Dados]{Obtenção dos Dados}
+
+\begin{frame}[fragile]
+  \frametitle{Obtenção dos Dados}
+  \begin{itemize}
+    \item Utilizou-se o \textit{github-csv-tools\footnote{https://github.com/gavinr/github-csv-tools}} que possibilita a exportação dos dados de um repositório do \textit{GitHub}, salvando as informações em um arquivo no formato CSV.
+    \item Dados tratados para um CSV com 2 colunas:
+  \end{itemize}
+  \begin{lstlisting}[caption={CSV Exemplo com Base de Dados},captionpos=b,frame=single,label={code:csv_example}]
+    security,PushObserver can be used to push serverinitiated HTTP/2 requests into an OkResponseCache...
+    not,Handle LOCKED in conversions.Motivation...
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Fonte de Dados}
+  \begin{itemize}
+    \item Base de Testes: \textit{issues} do projeto \textit{Wildfly\footnote{https://github.com/wildfly/wildfly}};
+    \item Base de Treinamento: \textit{issues} dos projetos: \textit{okhttp\footnote{https://github.com/square/okhttp}}, \textit{jgit\footnote{https://github.com/eclipse/jgit}} e \textit{couchbase\footnote{https://github.com/couchbase}}
+    \item Os dados de treinamento possuem \textbf{199} entradas, enquanto que para a base de teste foram utilizadas \textbf{211} entradas.
+  \end{itemize}
+\end{frame}
