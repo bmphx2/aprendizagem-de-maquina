@@ -25,4 +25,17 @@
 S.~Chacon and B.~Straub, \emph{Pro Git}.\hskip 1em plus 0.5em minus 0.4em\relax
   Apress, 2020.
 
+\bibitem{Mohey:Bag}
+D.~Mohey El-Din, ``Enhancement bag-of-words model for solving the challenges of
+  sentiment analysis,'' \emph{International Journal of Advanced Computer
+  Science and Applications}, vol.~7, 01 2016.
+
+\bibitem{Manning:InformationRetrieval}
+\BIBentryALTinterwordspacing
+C.~D. Manning, P.~Raghavan, and H.~Schütze, \emph{Introduction to Information
+  Retrieval}.\hskip 1em plus 0.5em minus 0.4em\relax Cambridge, UK: Cambridge
+  University Press, 2008. [Online]. Available:
+  \url{http://nlp.stanford.edu/IR-book/information-retrieval-book.html}
+\BIBentrySTDinterwordspacing
+
 \end{thebibliography}

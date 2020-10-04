@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.12.13)  26 SEP 2020 10:25
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.12.13)  4 OCT 2020 16:44
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -726,10 +726,10 @@ Dictionary: translator-theorem-dictionary, Language: English
 ] [5
 
 ]
-<images/issues_example.png, id=88, 876.27374pt x 521.95pt>
-File: images/issues_example.png Graphic file (type png)
-<use images/issues_example.png>
-Package pdftex.def Info: images/issues_example.png  used on input line 40.
+<../report/images/issues_example.png, id=86, 876.27374pt x 521.95pt>
+File: ../report/images/issues_example.png Graphic file (type png)
+<use ../report/images/issues_example.png>
+Package pdftex.def Info: ../report/images/issues_example.png  used on input line 40.
 (pdftex.def)             Requested size: 307.28987pt x 183.03566pt.
 
 Overfull \vbox (0.6288pt too high) detected at line 40
@@ -737,7 +737,7 @@ Overfull \vbox (0.6288pt too high) detected at line 40
 
 [6
 
- </Users/diogocezar/phd/aprendizagem-de-maquina/presentation/images/issues_example.png>] [7
+ <../report/images/issues_example.png>] [7
 
 ] [8
 
@@ -762,15 +762,44 @@ File: ot1mathkerncmss.fd 2013/03/27 Fontinst v1.933 font definitions for OT1/mat
 
 ]) (/Users/diogocezar/phd/aprendizagem-de-maquina/presentation/sections/pre-processing.tex [11
 
-]) (/Users/diogocezar/phd/aprendizagem-de-maquina/presentation/sections/features.tex [12
+]) (/Users/diogocezar/phd/aprendizagem-de-maquina/presentation/sections/features.tex
+\openout4 = `presentation.vrb'.
+
+ (/Users/diogocezar/phd/aprendizagem-de-maquina/presentation/presentation.vrb) [12
 
 ]) (/Users/diogocezar/phd/aprendizagem-de-maquina/presentation/sections/results.tex [13
 
-]) (/Users/diogocezar/phd/aprendizagem-de-maquina/presentation/sections/conclusion.tex [14
+]
+<../report/images/conf_mat_1.png, id=134, 1003.75pt x 843.15pt>
+File: ../report/images/conf_mat_1.png Graphic file (type png)
+<use ../report/images/conf_mat_1.png>
+Package pdftex.def Info: ../report/images/conf_mat_1.png  used on input line 32.
+(pdftex.def)             Requested size: 273.75069pt x 229.95645pt.
 
-] [15
+Overfull \vbox (61.1496pt too high) detected at line 32
+ []
 
-]) (/Users/diogocezar/phd/aprendizagem-de-maquina/presentation/sections/bibliography.tex (/Users/diogocezar/phd/aprendizagem-de-maquina/presentation/presentation.bbl) [16
+[14
+
+ <../report/images/conf_mat_1.png>]
+<../report/images/conf_mat_2.png, id=142, 1003.75pt x 843.15pt>
+File: ../report/images/conf_mat_2.png Graphic file (type png)
+<use ../report/images/conf_mat_2.png>
+Package pdftex.def Info: ../report/images/conf_mat_2.png  used on input line 41.
+(pdftex.def)             Requested size: 273.75069pt x 229.95645pt.
+
+Overfull \vbox (61.1496pt too high) detected at line 41
+ []
+
+[15
+
+ <../report/images/conf_mat_2.png>]) (/Users/diogocezar/phd/aprendizagem-de-maquina/presentation/sections/conclusion.tex [16
+
+] [17
+
+] [18
+
+]) (/Users/diogocezar/phd/aprendizagem-de-maquina/presentation/sections/bibliography.tex (/Users/diogocezar/phd/aprendizagem-de-maquina/presentation/presentation.bbl) [19
 
  </usr/local/texlive/2018/texmf-dist/tex/latex/beamer/beamericonarticle.pdf>])
 \tf@nav=\write6
@@ -791,18 +820,18 @@ Package rerunfilecheck Info: File `presentation.out' has not changed.
 (rerunfilecheck)             Checksum: B4722BBB50AC0E853EAD3613B16D2D4C;328.
  ) 
 Here is how much of TeX's memory you used:
- 19915 strings out of 492649
- 367981 string characters out of 6129621
+ 19953 strings out of 492649
+ 368891 string characters out of 6129621
  492971 words of memory out of 5000000
- 23286 multiletter control sequences out of 15000+600000
+ 23309 multiletter control sequences out of 15000+600000
  15995 words of font info for 58 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  56i,11n,64p,864b,1757s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on /Users/diogocezar/phd/aprendizagem-de-maquina/presentation/presentation.pdf (16 pages, 252945 bytes).
+Output written on /Users/diogocezar/phd/aprendizagem-de-maquina/presentation/presentation.pdf (19 pages, 408720 bytes).
 PDF statistics:
- 205 PDF objects out of 1000 (max. 8388607)
- 160 compressed objects within 2 object streams
- 41 named destinations out of 1000 (max. 500000)
- 114 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 231 PDF objects out of 1000 (max. 8388607)
+ 179 compressed objects within 2 object streams
+ 52 named destinations out of 1000 (max. 500000)
+ 124 words of extra memory for PDF output out of 10000 (max. 10000000)
 

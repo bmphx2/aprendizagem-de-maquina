@@ -5,9 +5,19 @@
   \href{http://www.ams.org/mathscinet-getitem?mr=#1}{#2}
 }
 \providecommand{\href}[2]{#2}
-\begin{thebibliography}{CS20}
+\begin{thebibliography}{MED16}
 
 \bibitem[CS20]{Scott:ProGit}
 Scott Chacon and Ben Straub, \emph{Pro git}, Apress, 2020.
+
+\bibitem[MED16]{Mohey:Bag}
+Doaa Mohey El-Din, \emph{Enhancement bag-of-words model for solving the
+  challenges of sentiment analysis}, International Journal of Advanced Computer
+  Science and Applications \textbf{7} (2016).
+
+\bibitem[MRS08]{Manning:InformationRetrieval}
+Christopher~D. Manning, Prabhakar Raghavan, and Hinrich Schütze,
+  \emph{Introduction to information retrieval}, Cambridge University Press,
+  Cambridge, UK, 2008.
 
 \end{thebibliography}

@@ -119,7 +119,7 @@ As regras aplicadas foram:
 
 \section{Extração de Características}
 
-Para a extração de características das bases de dados, utiliza-se uma técnica conhecida como \textit{Bag-of-Words} \textbf{Adicionar Referência}. Nesta técnica, as sentenças são representadas através da identificação de suas palavras e a quantidade em que aparecem no texto. Por exemplo, considerando o seguinte texto, escrito por \textit{Charles Dickens}:
+Para a extração de características das bases de dados, utiliza-se uma técnica conhecida como \textit{Bag-of-Words} \cite{Mohey:Bag}. Nesta técnica, as sentenças são representadas através da identificação de suas palavras e a quantidade em que aparecem no texto. Por exemplo, considerando o seguinte texto, escrito por \textit{Charles Dickens}:
 
 \begin{quote}
     It was the best of times,\\
@@ -132,7 +132,7 @@ Considerando palavras únicas, neste caso, teríamos um vocabulário com 10 pala
 
 Na sequência deve-se criar os vetores que representam a quantidade de aparições de uma palavra no texto. Por exemplo, no documento ``It was the age of wisdom'' pode-se representar através de um vetor dado por: $[1, 1, 1, 0, 1, 0, 0, 1, 1, 0]$. Se novas frases, com palavras fora do vocabulário definido forem adicionadas, então essas serão descartadas.
 
-Com os vetores de palavras formados com a identificação e a quantidade, é possível aplicar a técnica de \textit{TF-IDF (term frequency-inverce document frequency)}.  Nesta abordagem, valoriza-se o quão importante uma palavra é ao documento. O valor de \textit{TF-IDF} aumenta proporcionalmente conforme o número de vezes a palavra aparece no texto e é compensado pelo número de textos na base de dados, ajustando o número da frequência das palavras. \textbf{Adicionar Referência}
+Com os vetores de palavras formados com a identificação e a quantidade, é possível aplicar a técnica de \textit{TF-IDF (term frequency-inverce document frequency)}.  Nesta abordagem, valoriza-se o quão importante uma palavra é ao documento. O valor de \textit{TF-IDF} aumenta proporcionalmente conforme o número de vezes a palavra aparece no texto e é compensado pelo número de textos na base de dados, ajustando o número da frequência das palavras. \cite{Manning:InformationRetrieval}
 
 Basicamente para cada uma das \textit{issues} já sanitizadas aplica-se uma contagem das palavras mais relevantes para o problema em questão. Essas palavras foram obtidas a partir de uma contagem das palavras que mais apareciam nas \textit{issues} que eram relacionadas à segurança.
 
@@ -205,13 +205,13 @@ Os resultados obtidos estão dispostos na Tabela \ref{tab:resultados_experimento
 As matrizes de confusão dos classificadores: \textit{DecisionTreeClassifier}, \textit{GaussianNB} \textit{KNeighborsClassifier} e \textit{LinearDiscriminantAnalysis} estão dispostas na Figura \ref{fig:conf_mat_1}. Já para os classificadores: \textit{svm.LinearSVC}, \textit{LogisticRegression}, \textit{MLPClassifier} e \textit{Perceptron} as representações estão dispostas na Figura \ref{fig:conf_mat_2}.
 
 \begin{figure}[htbp]
-    \centerline{\includegraphics[width=28em]{images/conf_mat_1.png}}
+    \centerline{\includegraphics[width=25em]{images/conf_mat_1.png}}
     \caption{Matrizes de Confusão 1}
     \label{fig:conf_mat_1}
 \end{figure}
 
 \begin{figure}[htbp]
-    \centerline{\includegraphics[width=28em]{images/conf_mat_2.png}}
+    \centerline{\includegraphics[width=25em]{images/conf_mat_2.png}}
     \caption{Matrizes de Confusão 2}
     \label{fig:conf_mat_2}
 \end{figure}
@@ -232,7 +232,7 @@ Com relação às matrizes da Figura \ref{fig:conf_mat_2} é possível notar que
 
 \section{Trabalhos Futuros}
 
-A grande dificuldade encontrada no projeto foi a obtenção de uma base de dados rotulada. Toda a base utilizada foi tratada de forma manual.
+A grande dificuldade encontrada no projeto foi a obtenção de uma base de dados rotulada. Toda a base utilizada foi tratada de forma manual. O que dificultou bastante a geração da base de testes e validação.
 
 Para aumentar a base de treinamento de uma forma automatizada, propõe-se no futuro o desenvolvimento de um programa capaz de extrair automaticamente informações de \textit{issues} de repositórios do \textit{GitHub} marcados com um \textit{label} que contenha palavras relacionadas à segurança. O \textit{GitHub}, oferece uma API que possibilita a extração de informações dos projetos no formato JSON, o que facilitaria este processo. É possível notar que em alguns projetos, existem \textit{issues} pré-classificadas com \textit{labels}, como é o exemplo do repositório do projeto Angular, disponível em: https://github.com/angular/angular/labels?q=sec.
 
