@@ -304,12 +304,11 @@ INPUT /Users/diogocezar/phd/aprendizagem-de-maquina/presentation/presentation.to
 INPUT /Users/diogocezar/phd/aprendizagem-de-maquina/presentation/presentation.toc
 INPUT /Users/diogocezar/phd/aprendizagem-de-maquina/presentation/sections/introduction.tex
 INPUT /Users/diogocezar/phd/aprendizagem-de-maquina/presentation/sections/introduction.tex
-INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmss10.tfm
-INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmssi10.tfm
-INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmssi10.tfm
 INPUT /Users/diogocezar/phd/aprendizagem-de-maquina/presentation/../report/images/issues_example.png
 INPUT ../report/images/issues_example.png
 INPUT ../report/images/issues_example.png
+INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmss10.tfm
+INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmssi10.tfm
 INPUT /usr/local/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmssbx10.tfm
 INPUT /Users/diogocezar/phd/aprendizagem-de-maquina/presentation/sections/data.tex
 INPUT /Users/diogocezar/phd/aprendizagem-de-maquina/presentation/sections/data.tex

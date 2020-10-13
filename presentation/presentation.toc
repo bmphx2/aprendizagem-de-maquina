@@ -1,7 +1,7 @@
 \babel@toc {brazil}{}
 \beamer@sectionintoc {1}{Introdu\IeC {\c c}\IeC {\~a}o}{3}{0}{1}
-\beamer@sectionintoc {2}{Obten\IeC {\c c}\IeC {\~a}o dos Dados}{9}{0}{2}
-\beamer@sectionintoc {3}{Pr\IeC {\'e}-processamento}{11}{0}{3}
-\beamer@sectionintoc {4}{Extra\IeC {\c c}\IeC {\~a}o de Caracter\IeC {\'\i }sticas}{12}{0}{4}
-\beamer@sectionintoc {5}{Resultados}{13}{0}{5}
-\beamer@sectionintoc {6}{Conclus\IeC {\~a}o}{16}{0}{6}
+\beamer@sectionintoc {2}{Obten\IeC {\c c}\IeC {\~a}o dos Dados}{7}{0}{2}
+\beamer@sectionintoc {3}{Pr\IeC {\'e}-processamento}{9}{0}{3}
+\beamer@sectionintoc {4}{Extra\IeC {\c c}\IeC {\~a}o de Caracter\IeC {\'\i }sticas}{10}{0}{4}
+\beamer@sectionintoc {5}{Resultados}{11}{0}{5}
+\beamer@sectionintoc {6}{Conclus\IeC {\~a}o}{14}{0}{6}

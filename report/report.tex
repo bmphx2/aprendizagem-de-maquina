@@ -175,11 +175,48 @@ Um exemplo do arquivo de orquestração pode ser visto no Código \ref{code:orqu
 
 Para cada uma das ocorrências no vetor de experimentos, o programa desenvolvido utiliza implementações do \textit{framework} \textit{\footnote{https://scikit-learn.org/}scikit-learn} para o treinamento do classificador. Utlizando como fonte de dados, as entradas já tratados anteriormente (x\_train, y\_train, x\_test, y\_test). Os resultados são armazenados automaticamente em um arquivo no formato CSV que tabula os resultados obtidos em cada um dos experimentos. Os campos salvos são: \textit{Classifier, F1Score, Accuracy e Time (s)}. Além disso, para cada execução são armazenadas as matrizes de confusão como imagens e também como arquivos CSV.
 
-\section{Resultados Obtidos}
+\section{Classificação}
+
+Para o trabalho foram utilizados 8 classificadores:
+
+\begin{itemize}
+    \item \textit{Linear Discriminant Analysis} (LDA): técnica de transformação linear que maximiza a característica que se pode separar entre classes e minimiza o espalhamento dentro da classe; \cite{Andrew:Statistical}
+    \item Máquina de Vetores de Suporte \textit{Support Vector Machine} (SVM): o classificador tem como objetivo encontrar um hiperplano que maximiza a separabilidade das classes; \cite{Andrew:Statistical}
+    \item Vizinhos mais próximos (\textit{KNN}): algoritmo utilizado para classificação que define a classe de uma nova amostra com base na representatividade de um conjunto de $k$ vizinhos mais próximos; \cite{Duda:Pattern}
+    \item \textit{Multi-layer Perceptron} (MLP): é uma rede neural com múltiplas camadas compostas de neurônios que realizam o mapeamento das entradas ponderadas em um espaço não linear; \cite{Andrew:Statistical}
+    \item O \textit{Perceptron} é um tipo de rede neural artificial que representa um classificador binário que mapeia sua entrada $x$ (um vetor de valor real) para um valor de saída $f(x)$ utilizando pesos para aprender ao logo do tempo; \cite{Rosenblatt1958ThePA}
+    \item Uma árvore de decisão (\textit{Decision Tree}) consiste em uma coleção de nós internos e nós folhas, organizados em um modelo hierárquico como uma estrutura de dados, que orienta a classificação (baseado em comparações) de uma amostra a ser classificada. \cite{Duda:Pattern}
+    \item O \textit{Multilayer Perceptron} (MLP) é semelhante ao \textit{Perceptron}, porém com a utilização de mais de uma camada para a aprendizagem ao longo do tempo;
+    \item A técnica de mistura de gaussianas é uma abordagem probabilística para realizar um agrupamento do tipo \textit{soft clustering}. Este tipo de abordagem atribui um exemplo a uma classe com uma dada probabilidade; \cite{Pinkus99approximationtheory}
+\end{itemize}
 
 O orquestrador dos experimentos foi configurado para executar os experimentos com os classificadores: \textit{svm.LinearSVC}, \textit{KNeighborsClassifier}, \textit{GaussianNB}, \textit{LinearDiscriminantAnalysis}, \textit{LogisticRegression}, \textit{Perceptron}, \textit{DecisionTreeClassifier} e \textit{MLPClassifier}.
 
 Os parâmetros utilizados foram os default em cada um dos classificadores. Com a exeção do \textit{KNeighborsClassifier} em que se testou com \textit{n\_neighbors: 7} e \textit{LogisticRegression} que se utilizou \textit{solver: lbfgs}.
+
+\section{Resultados Obtidos}
+
+Esta seção mostra os resultados obtidos após a execução do orquestrador para os diferentes classificadores.
+
+\subsection{Avaliação de Desempenho}
+
+Para a medição dos resultados utilizou-se a Acurácia e F1Score.
+
+A Acurácia mede a razão entre o número de previsões corretas e o número total de amostras de entrada e é dada por:
+
+\begin{equation}
+    \text{Acurácia}=\frac{\text{VP} + \text{VN}}{\text{VP} + \text{VN} + \text{FP} + \text{FN}}
+\end{equation}
+
+onde, $VP$ é os positivos verdadeiros e $FN$ os negativos falsos.
+
+Já a métrica de F1Score, é dada por:
+
+\begin{equation}
+    \text{F1Score} = 2 \cdot \frac{P\cdot R}{P + R}
+\end{equation}
+
+onde $P$ (precisão) é o número de verdadeiros positivos divido pelo número de positivos estimados pelo modelo. e $R$ (\textit{recall}) é o número de verdadeiros positivos divido pela somade $VP + FN$.
 
 Os resultados obtidos estão dispostos na Tabela \ref{tab:resultados_experimentos}.
 
@@ -220,15 +257,13 @@ As matrizes de confusão dos classificadores: \textit{DecisionTreeClassifier}, \
 
 Como é possível observar na Tabela \ref{tab:resultados_experimentos} os classificadores que utilizaram os algorítmos: \textit{LinearDiscriminantAnalysis}, \textit{LogisticRegression}, \textit{DecisionTreeClassifier}, \textit{MLPClassifier}, \textit{svm.LinearSVC} e \textit{Perceptron} tiveram resultados bastante semelhantes, com uma taxa de acurácia em torno de $0.86$ e um f1score também por volta de $0.86$. A duração do processo de classificação (anotada pela coluna Time (s)) demostram que para o volume de dados utilizado todos tem um tempo de treinamento bem baixo, retornando o resultado em menos de 2 segundos no pior caso.
 
-Para o classificador \textit{KNeighborsClassifier} obteve-se um resultado bastante insatisfatório, com acurácia de $0.53$ e f1score de $0.69$. Isso se deve \textbf{completar...}
+Para o classificador \textit{KNeighborsClassifier} obteve-se um resultado bastante insatisfatório, com acurácia de $0.53$ e f1score de $0.69$. Isso se deve, pois os exemplos provavelmente foram projetados de forma esparça.
 
-Já para o classificador \textit{GaussianNB} também obteve-se um resultado bastante insatisfatório, com acurácia de $0.47$ e f1score de $0.3$., e isso se deve \textbf{completar...}
-
-Com relação às matrizes de confusão da Figura \ref{fig:conf_mat_1}, pode-se notar que para os algorítmos \textit{DecisionTreeClassifier} e \textit{LinearDiscriminantAnalysis} obteve-se a mesma quantidade de erros, e isso se deve \textbf{completar...}
+Já para o classificador \textit{GaussianNB} também obteve-se um resultado bastante insatisfatório, com acurácia de $0.47$ e f1score de $0.3$, e isso se deve também pela projeção esparçada dos exemplos.
 
 Ainda nas matrizes da Figura \ref{fig:conf_mat_1}, nota-se que para os piores classificadores (neste problema) \textit{KNeighborsClassifier} e \textit{GaussianNB} houveram vários erros que praticamente anulam a eficiência do classificador.
 
-Com relação às matrizes da Figura \ref{fig:conf_mat_2} é possível notar que praticament o mesmo número de erros foi encontrado, muito provavelmente nos mesmo exemplos.
+Com relação às matrizes da Figura \ref{fig:conf_mat_2} é possível notar que praticamente o mesmo número de erros foi encontrado, muito provavelmente nos mesmo exemplos.
 
 \section{Trabalhos Futuros}
 

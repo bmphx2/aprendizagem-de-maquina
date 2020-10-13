@@ -5,10 +5,14 @@
   \href{http://www.ams.org/mathscinet-getitem?mr=#1}{#2}
 }
 \providecommand{\href}[2]{#2}
-\begin{thebibliography}{MED16}
+\begin{thebibliography}{DHGS01}
 
 \bibitem[CS20]{Scott:ProGit}
 Scott Chacon and Ben Straub, \emph{Pro git}, Apress, 2020.
+
+\bibitem[DHGS01]{Duda:Pattern}
+Richard Duda, Peter Hart, and David G.~Stork, \emph{Pattern classification},
+  Ltd. John Wiley and Sons: New York, 2001.
 
 \bibitem[MED16]{Mohey:Bag}
 Doaa Mohey El-Din, \emph{Enhancement bag-of-words model for solving the
@@ -19,5 +23,18 @@ Doaa Mohey El-Din, \emph{Enhancement bag-of-words model for solving the
 Christopher~D. Manning, Prabhakar Raghavan, and Hinrich Schütze,
   \emph{Introduction to information retrieval}, Cambridge University Press,
   Cambridge, UK, 2008.
+
+\bibitem[Pin99]{Pinkus99approximationtheory}
+Allan Pinkus, \emph{Approximation theory of the mlp model in neural networks},
+  ACTA NUMERICA \textbf{8} (1999), 143--195.
+
+\bibitem[Ros58]{Rosenblatt1958ThePA}
+F.~Rosenblatt, \emph{The perceptron: a probabilistic model for information
+  storage and organization in the brain.}, Psychological review \textbf{65 6}
+  (1958), 386--408.
+
+\bibitem[Web02]{Andrew:Statistical}
+Andrew Webb, \emph{Statistical pattern recognition: Third edition}, Ltd. John
+  Wiley and Sons: New York, 2002.
 
 \end{thebibliography}
