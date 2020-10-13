@@ -38,4 +38,21 @@ C.~D. Manning, P.~Raghavan, and H.~Schütze, \emph{Introduction to Information
   \url{http://nlp.stanford.edu/IR-book/information-retrieval-book.html}
 \BIBentrySTDinterwordspacing
 
+\bibitem{Andrew:Statistical}
+A.~Webb, \emph{Statistical Pattern Recognition: Third Edition}.\hskip 1em plus
+  0.5em minus 0.4em\relax Ltd. John Wiley and Sons: New York, 2002.
+
+\bibitem{Duda:Pattern}
+R.~Duda, P.~Hart, and D.~G.~Stork, \emph{Pattern Classification}.\hskip 1em
+  plus 0.5em minus 0.4em\relax Ltd. John Wiley and Sons: New York, 2001.
+
+\bibitem{Rosenblatt1958ThePA}
+F.~Rosenblatt, ``The perceptron: a probabilistic model for information storage
+  and organization in the brain.'' \emph{Psychological review}, vol. 65 6, pp.
+  386--408, 1958.
+
+\bibitem{Pinkus99approximationtheory}
+A.~Pinkus, ``Approximation theory of the mlp model in neural networks,''
+  \emph{ACTA NUMERICA}, vol.~8, pp. 143--195, 1999.
+
 \end{thebibliography}

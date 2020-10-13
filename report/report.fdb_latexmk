@@ -1,15 +1,15 @@
 # Fdb version 3
-["bibtex report"] 1601839349 "report.aux" "report.bbl" "report" 1601840733
+["bibtex report"] 1602597113 "report.aux" "report.bbl" "report" 1602597115
   "./IEEEtran.bst" 1168508629 61632 1eded68932b68cdfaf04f54eba82634b ""
   "IEEEabrv.bib" 1600369160 17841 d1b6e95678a4492b1a7c620153c6aba2 ""
-  "IEEEexample.bib" 1601839828 2071 b999de14fd4d707387e6a7095c5f9a33 ""
-  "report.aux" 1601840729 1977 1a27f2278bbb244aed17815537409822 ""
+  "IEEEexample.bib" 1602597100 3021 02a98881836ef7506bae4af7e5cbbeb9 ""
+  "report.aux" 1602597114 2547 3be0716d95abdfa835cbdb614f3ef4ae ""
   (generated)
-  "report.bbl"
   "report.blg"
-["pdflatex"] 1601840728 "/Users/diogocezar/phd/aprendizagem-de-maquina/report/report.tex" "/Users/diogocezar/phd/aprendizagem-de-maquina/report/report.pdf" "report" 1601840733
-  "/Users/diogocezar/phd/aprendizagem-de-maquina/report/report.aux" 1601840729 1977 1a27f2278bbb244aed17815537409822 ""
-  "/Users/diogocezar/phd/aprendizagem-de-maquina/report/report.tex" 1601840733 17405 ffc7a3e3efa964f6e274c8a8e8ce4e26 ""
+  "report.bbl"
+["pdflatex"] 1602597113 "/Users/diogocezar/phd/aprendizagem-de-maquina/report/report.tex" "/Users/diogocezar/phd/aprendizagem-de-maquina/report/report.pdf" "report" 1602597115
+  "/Users/diogocezar/phd/aprendizagem-de-maquina/report/report.aux" 1602597114 2547 3be0716d95abdfa835cbdb614f3ef4ae ""
+  "/Users/diogocezar/phd/aprendizagem-de-maquina/report/report.tex" 1602597110 20086 c508cae0ec7b60f7244aa349afe59107 ""
   "/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc" 1480098666 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2018/texmf-dist/fonts/map/fontname/texfonts.map" 1511824771 3332 103109f5612ad95229751940c61aada0 ""
   "/usr/local/texlive/2018/texmf-dist/fonts/tfm/adobe/times/ptmb7t.tfm" 1480098689 2172 fd0c924230362ff848a33632ed45dc23 ""
@@ -41,6 +41,7 @@
   "/usr/local/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmsy8.tfm" 1480098701 1120 8b7d695260f3cff42e636090a8002094 ""
   "/usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb" 1480098733 36299 5f9df58c2139e7edcf37c8fca4bd384d ""
   "/usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1480098733 35752 024fb6c41858982481f6968b5fc26508 ""
+  "/usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1480098733 32569 5e5ddc8df908dea60932f3c484a54c0d ""
   "/usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb" 1480098733 32716 08e384dc442464e7285e891af9f45947 ""
   "/usr/local/texlive/2018/texmf-dist/fonts/type1/urw/times/utmb8a.pfb" 1480098746 44729 811d6c62865936705a31c797a1d5dada ""
   "/usr/local/texlive/2018/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb" 1480098746 44656 0cbca70e0534538582128f6b54593cca ""
@@ -101,12 +102,12 @@
   "images/conf_mat_1.png" 1600605541 70805 d4d6d0aa56c24985644d3a3c09739d45 ""
   "images/conf_mat_2.png" 1600606204 65176 17f12423e67a5cc56164f35210e045a8 ""
   "images/issues_example.png" 1600642342 240537 34dd527e728d092b84948903320dd196 ""
-  "report.aux" 1601840729 1977 1a27f2278bbb244aed17815537409822 ""
-  "report.bbl" 1601839349 1592 d0420bbf2ae906bba874622d1f41481b "bibtex report"
-  "report.tex" 1601840733 17405 ffc7a3e3efa964f6e274c8a8e8ce4e26 ""
+  "report.aux" 1602597114 2547 3be0716d95abdfa835cbdb614f3ef4ae ""
+  "report.bbl" 1602597113 2313 81cb40efb6e7fad5bf40aaa7737ebe51 "bibtex report"
+  "report.tex" 1602597110 20086 c508cae0ec7b60f7244aa349afe59107 ""
   (generated)
-  "/Users/diogocezar/phd/aprendizagem-de-maquina/report/report.pdf"
   "report.aux"
-  "report.pdf"
-  "report.log"
   "/Users/diogocezar/phd/aprendizagem-de-maquina/report/report.log"
+  "report.log"
+  "report.pdf"
+  "/Users/diogocezar/phd/aprendizagem-de-maquina/report/report.pdf"
